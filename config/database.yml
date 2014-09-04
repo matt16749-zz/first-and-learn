@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: first-and-learn_production
-  username: first-and-learn
-  password: <%= ENV['FIRST-AND-LEARN_DATABASE_PASSWORD'] %>
