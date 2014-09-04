@@ -18,11 +18,11 @@
 ## MVP User Stories    
   * Resources: Any internet based learning tool  
   * Path: a set of resources that start from beginning to end  
-    - User can login with OAuth
+    - User can login
     - User can add resources
     - User can link resources into a path
     - User can view the paths of the other users
-    - User can upvote/downvote another user's path
+    - User can vote on another user's path
     - Users can comment on paths and resources
 
 ---------------------------------------------------------------------------------------------------------
