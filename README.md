@@ -5,7 +5,7 @@
 
 #### Members
   - Tommy Duggar
-  - Patrick Menzel
+  - PATRICK MENZEL
   - Danielle Sublett
   - Gunnari Auvinen
   - Matthew Chan
@@ -16,8 +16,8 @@
   - To organize resources into a logical learning path  
 
 ## MVP User Stories    
-  * Resources: Any internet based learning tool  
-  * Path: a set of resources that start from beginning to end  
+  * Resources: Any Internet based learning tool  
+  * Path: a set of resources that progresses linearly
     - User can login
     - User can add resources
     - User can link resources into a path
