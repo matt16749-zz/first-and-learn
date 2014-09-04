@@ -100,7 +100,6 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
-<<<<<<< HEAD
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.4)
@@ -118,8 +117,6 @@ GEM
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
     rubyzip (1.1.6)
-=======
->>>>>>> master
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
