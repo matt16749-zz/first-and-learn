@@ -15,8 +15,7 @@
 # MVP
   - To organize resources into a logical learning path  
 
-## MVP User Stories 
-  ### Key    
+## MVP User Stories    
   * Resources: Any internet based learning tool  
   * Path: a set of resources that start from beginning to end  
     - User can login with OAuth
