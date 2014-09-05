@@ -1,6 +1,6 @@
 comment_ids = 200
 path_ids = 30
-resource_ids = 200
+asset_ids = 200
 tag_ids = 100
 takeaway_ids = 100
 user_ids = 20
@@ -23,8 +23,8 @@ path_ids.times do
     )
 end
 
-resource_ids.times do
-  Resource.create(
+asset_ids.times do
+  Asset.create(
                     title: Faker::Lorem.sentence,
                     description: Faker::Lorem.paragraph,
                     url: Faker::Internet.url,
@@ -36,13 +36,13 @@ takeaway_ids.times do
   Takeaway.create(
                     body: Faker::Hacker.say_something_smart,
                     path_id: rand(1..path_ids),
-                    resource_id: rand(1..resource_ids)
+                    asset_id: rand(1..asset_ids)
     )
 end
 
 comment_ids.times do
-  type = ['paths', 'resources'].sample
-  id = type == 'paths' ? path_ids : resource_ids
+  type = ['paths', 'assets'].sample
+  id = type == 'paths' ? path_ids : asset_ids
   Comment.create(
                   body: Faker::Lorem.paragraph,
                   user_id: rand(1..user_ids),
@@ -52,8 +52,8 @@ comment_ids.times do
 end
 
 vote_ids.times do
-  type = ['paths', 'resources'].sample
-  id = type == 'paths' ? path_ids : resource_ids
+  type = ['paths', 'assets'].sample
+  id = type == 'paths' ? path_ids : asset_ids
   Vote.create(
                 vote_state: [true, false].sample,
                 user_id: rand(1..user_ids),
