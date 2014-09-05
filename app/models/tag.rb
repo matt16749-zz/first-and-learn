@@ -1,6 +1,7 @@
 class Tag < ActiveRecord::Base
-  has_many :resources
+  has_many :assets
   has_many :paths
 
-  validates :type, presence: true
+  validates :name, presence: true
+  validates :name, uniqueness: true
 end
