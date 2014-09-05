@@ -3,7 +3,7 @@ class CreateResources < ActiveRecord::Migration
     create_table :resources do |t|
       t.string :title, :null => false
       t.text :description, :null => false
-      t.string :url, :null => false, :limit => 500
+      t.text :url, :null => false, :limit => 500
       t.integer :user_id, :null => false
     end
   end
