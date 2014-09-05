@@ -11,49 +11,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905014054) do
+ActiveRecord::Schema.define(version: 20140905024636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
-    t.text    "body",             null: false
-    t.integer "user_id",          null: false
-    t.string  "commentable_type", null: false
-    t.integer "commentable_id",   null: false
+    t.text     "body",             null: false
+    t.integer  "user_id",          null: false
+    t.string   "commentable_type", null: false
+    t.integer  "commentable_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "paths", force: true do |t|
-    t.string  "title",       null: false
-    t.text    "description", null: false
-    t.integer "user_id",     null: false
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "paths_tags", force: true do |t|
-    t.integer "path_id", null: false
-    t.integer "tag_id",  null: false
+    t.integer  "path_id",    null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "resources", force: true do |t|
-    t.string  "title",       null: false
-    t.text    "description", null: false
-    t.text    "url",         null: false
-    t.integer "user_id",     null: false
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.text     "url",         null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "resources_tags", force: true do |t|
-    t.integer "resource_id", null: false
-    t.integer "tag_id",      null: false
+    t.integer  "resource_id", null: false
+    t.integer  "tag_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", force: true do |t|
-    t.string "type", null: false
+    t.string   "type",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "takeaways", force: true do |t|
-    t.string  "body",        null: false
-    t.integer "path_id",     null: false
-    t.integer "resource_id", null: false
+    t.string   "body",        null: false
+    t.integer  "path_id",     null: false
+    t.integer  "resource_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -77,10 +91,12 @@ ActiveRecord::Schema.define(version: 20140905014054) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
-    t.integer "user_id",       null: false
-    t.boolean "vote_state",    null: false
-    t.string  "voteable_type", null: false
-    t.integer "voteable_id",   null: false
+    t.integer  "user_id",       null: false
+    t.boolean  "vote_state",    null: false
+    t.string   "voteable_type", null: false
+    t.integer  "voteable_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
