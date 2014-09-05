@@ -1,8 +1,8 @@
 comment_ids = 200
-path_ids = 30
+path_ids = 5
 asset_ids = 200
 tag_ids = 100
-takeaway_ids = 100
+step_ids = 100
 user_ids = 20
 vote_ids = 500
 
@@ -15,12 +15,21 @@ user_ids.times do
     )
 end
 
-path_ids.times do
-  Path.create(
+path_ids.times do |path_index|
+  path = Path.create(
                 title: Faker::Lorem.sentence,
                 description: Faker::Lorem.paragraph,
                 user_id: rand(1..user_ids)
     )
+
+  5.times do |step_index|
+    path.steps.create(
+                body: Faker::Hacker.say_something_smart,
+                position: step_index + 1,
+                path_id: path_index + 1,
+                asset_id: rand(1..asset_ids)
+    )
+  end
 end
 
 asset_ids.times do
@@ -32,17 +41,9 @@ asset_ids.times do
     )
 end
 
-takeaway_ids.times do
-  Takeaway.create(
-                    body: Faker::Hacker.say_something_smart,
-                    path_id: rand(1..path_ids),
-                    asset_id: rand(1..asset_ids)
-    )
-end
-
 comment_ids.times do
-  type = ['paths', 'assets'].sample
-  id = type == 'paths' ? path_ids : asset_ids
+  type = ['Path', 'Asset'].sample
+  id = type == 'Path' ? path_ids : asset_ids
   Comment.create(
                   body: Faker::Lorem.paragraph,
                   user_id: rand(1..user_ids),
@@ -52,8 +53,8 @@ comment_ids.times do
 end
 
 vote_ids.times do
-  type = ['paths', 'assets'].sample
-  id = type == 'paths' ? path_ids : asset_ids
+  type = ['Path', 'Asset'].sample
+  id = type == 'Path' ? path_ids : asset_ids
   Vote.create(
                 vote_state: [true, false].sample,
                 user_id: rand(1..user_ids),
