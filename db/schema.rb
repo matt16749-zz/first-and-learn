@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905024636) do
+ActiveRecord::Schema.define(version: 20140905174530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: true do |t|
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.text     "url",         null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -40,15 +49,6 @@ ActiveRecord::Schema.define(version: 20140905024636) do
     t.datetime "updated_at"
   end
 
-  create_table "resources", force: true do |t|
-    t.string   "title",       null: false
-    t.text     "description", null: false
-    t.text     "url",         null: false
-    t.integer  "user_id",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "resources_tags", force: true do |t|
     t.integer  "resource_id", null: false
     t.integer  "tag_id",      null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140905024636) do
   end
 
   create_table "tags", force: true do |t|
-    t.string   "type",       null: false
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
