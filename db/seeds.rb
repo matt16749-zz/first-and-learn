@@ -26,7 +26,7 @@ end
 resource_ids.times do
   Resource.create(
                     title: Faker::Lorem.sentence,
-                    description: Faker::Lorem.description,
+                    description: Faker::Lorem.paragraph,
                     url: Faker::Internet.url,
                     user_id: rand(1..user_ids)
     )
@@ -37,14 +37,6 @@ takeaway_ids.times do
                     body: Faker::Hacker.say_something_smart,
                     path_id: rand(1..path_ids),
                     resource_id: rand(1..resource_ids)
-    )
-end
-
-tag_ids.times do
-  Tag.create(
-              type: Faker::Lorem.word,
-              path_id: rand(1..path_ids),
-              resource_id: rand(1..resource_ids)
     )
 end
 
@@ -63,7 +55,7 @@ vote_ids.times do
   type = ['paths', 'resources'].sample
   id = type == 'paths' ? path_ids : resource_ids
   Vote.create(
-                state: [true, false].sample,
+                vote_state: [true, false].sample,
                 user_id: rand(1..user_ids),
                 voteable_id: rand(1..id),
                 voteable_type: type
