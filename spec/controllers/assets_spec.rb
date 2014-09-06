@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe AssetsController, :type => :controller do
+  before :each do
+    User.destroy_all
+    Asset.destroy_all
+  end
+
   describe "GET #index" do
     it 'responds successfully with an HTTP 200 status code' do
       get :index
