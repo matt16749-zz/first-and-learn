@@ -1,7 +1,7 @@
 <% if @paths.nil? %>
   <h1>There are currently no paths to display!</h1>
 <% else %>
-  <% @paths.each do |asset| %>
+  <% @paths.each do |path| %>
     <div class="path">
       <ul>
         <li><a href="<%= path.url %>"><%= path.title %></a></li>
