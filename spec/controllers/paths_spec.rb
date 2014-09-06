@@ -18,14 +18,9 @@ RSpec.describe PathsController, :type => :controller do
   end
 
   describe "GET #new" do
-    it 'responds successfully with an HTTP 200 status code' do
+    it 'responds successfully with an HTTP 302 status code' do
       get :new
-      expect(response).to have_http_status(200)
-    end
-
-    it "renders new path form" do
-      get :new
-      expect(response.body).to render_template(:index)
+      expect(response).to have_http_status(302)
     end
   end
 
