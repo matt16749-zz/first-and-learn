@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <%= form_for @asset, url: {action: 'create'}, html: {class: 'new-asset'} do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_area :description %>
+    <%= f.url_field :url %>
+  <% end %>
+<% else %>
+  <h1>You must sign in to create a new asset</h1>
+<% end %>
