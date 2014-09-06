@@ -35,4 +35,12 @@ RSpec.describe AssetsController, :type => :controller do
       expect(response).to have_http_status(302)
     end
   end
+
+  describe 'GET #show' do
+    it 'responds successfully with an HTTP 200 status' do
+      asset = create(:asset)
+      get :show, {:id => asset.id}
+      expect(response).to have_http_status(200)
+    end
+  end
 end

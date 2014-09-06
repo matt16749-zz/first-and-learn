@@ -3,6 +3,10 @@ class AssetsController < ApplicationController
     @assets = Asset.all
   end
 
+  def show
+    @asset = Asset.find(params[:id])
+  end
+
   def new
     redirect_to user_session_path unless user_signed_in?
     @asset = Asset.new
@@ -19,6 +23,7 @@ class AssetsController < ApplicationController
       render :new
     end
   end
+
 
   private
   def asset_params
