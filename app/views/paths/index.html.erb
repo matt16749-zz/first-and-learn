@@ -4,14 +4,15 @@
   <% @paths.each do |path| %>
     <div class="path">
       <ul>
-        <li><a href="<%= path.url %>"><%= path.title %></a></li>
+        <li><a href="paths/<%= path.id %>"><%= path.title %></a></li>
         <li><%= path.description %></li>
       </ul>
     </div>
   <% end %>
-
-  <% unless @path.nil? %>
-  <%= render partial: "_form", locals:(path: @path) %>
+  <% if @path.nil? %>
+  <%= link_to "New", new_path_path %>
+   <% else%>
+    <%= render "form", :locals => {path: @path} %>
   <% end %>
 <% end %>
 
