@@ -9,6 +9,7 @@ class PathsController < ApplicationController
     render :index
   end
 
+
 private
   def path_params
     params.require(:path).permit(:title, :description, :user_id)
