@@ -9,6 +9,13 @@ class PathsController < ApplicationController
     render :index
   end
 
+  def create
+    path = Path.new(path_params)
+    if current_user
+      current_user.paths << path
+    end
+    redirect_to paths_path
+  end
 
 private
   def path_params
