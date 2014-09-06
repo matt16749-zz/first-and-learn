@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AssetsController, :type => :controller do
   let(:user) { create(:user) }
+  let(:asset) { create(:asset) }
 
   before :each do
     User.destroy_all
@@ -17,7 +18,6 @@ RSpec.describe AssetsController, :type => :controller do
 
   describe 'GET #show' do
     it 'responds successfully with an HTTP 200 status' do
-      asset = create(:asset)
       get :show, {:id => asset.id}
       expect(response).to have_http_status(200)
     end
@@ -47,13 +47,11 @@ RSpec.describe AssetsController, :type => :controller do
   describe "GET #edit" do
     it 'responds successfully with an HTTP 200 status code' do
       sign_in :user, user
-      asset = create(:asset)
       get :edit, {id: asset.id}
       expect(response).to have_http_status(200)
     end
 
     it 'redirects to login page if user is not logged in' do
-      asset = create(:asset)
       get :edit, {id: asset.id}
       expect(response).to redirect_to '/users/sign_in'
     end
@@ -62,13 +60,11 @@ RSpec.describe AssetsController, :type => :controller do
   describe "POST #update" do
     it 'responds successfully with an HTTP 302 status code' do
       sign_in :user, user
-      asset = create(:asset)
       post :update, id: asset.id, asset: FactoryGirl.attributes_for(:asset)
       expect(response).to have_http_status(302)
     end
 
     it 'redirects to login page if user is not logged in' do
-      asset = create(:asset)
       post :update, id: asset.id, asset: FactoryGirl.attributes_for(:asset)
       expect(response).to redirect_to '/users/sign_in'
     end
@@ -77,13 +73,11 @@ RSpec.describe AssetsController, :type => :controller do
   describe "POST #destroy" do
     it 'responds successfully with an HTTP 302 status code' do
       sign_in :user, user
-      asset = create(:asset)
       post :destroy, id: asset.id
       expect(response).to have_http_status(302)
     end
 
     it 'redirects to login page if user is not logged in' do
-      asset = create(:asset)
       post :destroy, id: asset.id
       expect(response).to redirect_to '/users/sign_in'
     end
