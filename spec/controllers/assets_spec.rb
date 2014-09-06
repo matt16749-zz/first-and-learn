@@ -51,6 +51,11 @@ RSpec.describe AssetsController, :type => :controller do
       get :edit, {id: asset.id}
       expect(response).to have_http_status(200)
     end
-  end
 
+    it 'responds successfully with an HTTP 302 status code if user not logged in' do
+      asset = create(:asset)
+      get :edit, {id: asset.id}
+      expect(response).to have_http_status(302)
+    end
+  end
 end
