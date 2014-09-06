@@ -17,6 +17,27 @@ class PathsController < ApplicationController
     redirect_to paths_path
   end
 
+  def edit
+    path = Path.find(params[:id])
+    @paths = Path.all
+    if current_user
+      @path = path
+    end
+    render :index
+  end
+
+  def update
+    path = Path.find(params[:id])
+    path.update_attributes(path_params)
+    path.save
+    redirect_to paths_path
+  end
+
+  def show
+    @path = Path.find(params[:id])
+  end
+
+
 private
   def path_params
     params.require(:path).permit(:title, :description, :user_id)
