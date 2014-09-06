@@ -6,4 +6,4 @@
 <% @path.steps.each do |step|%>
   <p><%= step.body %></p>
 <% end %>
-
+<button><%= link_to "delete", path_path(@path), :method => :delete %></button>
