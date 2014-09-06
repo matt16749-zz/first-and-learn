@@ -4,9 +4,11 @@
   <% @paths.each do |path| %>
     <div class="path">
       <ul>
-        <li><a href="<%= path.url %>"><%= path.title %></a></li>
+        <li><%= link_to path.title, path_path(path) %><%= link_to "Edit Path", edit_path_path(path) %></li>
         <li><%= path.description %></li>
       </ul>
     </div>
   <% end %>
 <% end %>
+
+<%= link_to "Create New Path", new_path_path %>
