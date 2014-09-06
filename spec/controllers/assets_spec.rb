@@ -73,4 +73,13 @@ RSpec.describe AssetsController, :type => :controller do
       expect(response).to have_http_status(302)
     end
   end
+
+  describe "POST #destroy" do
+    it 'responds successfully with an HTTP 200 status code' do
+      sign_in :user, user
+      asset = create(:asset)
+      post :destroy, id: asset.id
+      expect(response).to have_http_status(302)
+    end
+  end
 end

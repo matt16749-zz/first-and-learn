@@ -41,6 +41,13 @@ class AssetsController < ApplicationController
     end
   end
 
+  def destroy
+    redirect_to user_session_path and return unless user_signed_in?
+
+    asset = Asset.find(params[:id]).destroy
+    redirect_to assets_path
+  end
+
   private
   def asset_params
     params.require(:asset).permit(:title, :description, :url)
