@@ -1,0 +1,12 @@
+<% if @assets.nil? %>
+  <h1>There are currently no assets to display!</h1>
+<% else %>
+  <% @assets.each do |asset| %>
+    <div class="asset">
+      <ul>
+        <li><a href="<%= asset.url %>"><%= asset.title %></a></li>
+        <li><%= asset.description %></li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
