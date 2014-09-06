@@ -1,4 +1,14 @@
-<%= form_for(path) do |f| %>
-<h1>It works!</h1>
+<%= form_for(@path) do |f| %>
+ <ul>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %>
+</ul>
+ <ul>
+  <%= f.label :description %><br>
+  <%= f.text_field :description %>
+</ul>
 
+ <ul>
+  <%= f.submit :NEW! %><br>
+</ul>
 <% end %>
