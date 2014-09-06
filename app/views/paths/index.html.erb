@@ -10,9 +10,9 @@
     </div>
   <% end %>
 <% end %>
-  <% if @path.nil? %>
-  <%= link_to "Create New Path", new_path_path if current_user %>
-   <% else%>
-    <%= render "form", :locals => {path: @path} %>
-  <% end %>
+
+<%= link_to "Create New Path", new_path_path %>
+
+
+
 

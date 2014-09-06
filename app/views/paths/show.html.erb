@@ -7,6 +7,6 @@
   <p><%= step.body %></p>
 <% end %>
 <% if current_user[:id] == @path.user_id %>
-<button><%= link_to "delete", path_path(@path), :method => :delete %></button>
+  <button><%= link_to "delete", path_path(@path), :method => :delete %></button>
 <% end %>
 <button><%= link_to "back", paths_path %></button>
