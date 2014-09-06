@@ -4,11 +4,8 @@ class AssetsController < ApplicationController
   end
 
   def new
-    if user_signed_in?
-      @asset = Asset.new
-    else
-      redirect_to user_session_path
-    end
+    redirect_to user_session_path unless user_signed_in?
+    @asset = Asset.new
   end
 
   end
