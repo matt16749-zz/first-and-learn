@@ -30,9 +30,9 @@ RSpec.describe AssetsController, :type => :controller do
       expect(response).to have_http_status(200)
     end
 
-    it "responds with a HTTP 302 status if user isn't logged in" do
+    it "redirects to login page if user is not logged in do" do
       get :new
-      expect(response).to have_http_status(302)
+      expect(response).to redirect_to '/users/sign_in'
     end
   end
 
