@@ -1,5 +1,7 @@
 class AssetsController < ApplicationController
-
+  def index
+    @assets = Asset.all
+  end
 
   private
   def asset_params
