@@ -1,0 +1,9 @@
+<h1>Your Path</h1>
+<p>Created by: <%= @path.user.first_name %></p>
+<p><%= @path.title %></p>
+<%= @path.description %>
+<p>Steps:</p>
+<% @path.steps.each do |step|%>
+  <p><%= step.body %></p>
+<% end %>
+
