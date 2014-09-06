@@ -1,4 +1,7 @@
 <h1><%= @asset.title%></h1>
 <p><%= @asset.description%></p>
 <p><%= @asset.url%></p>
-<%= link_to "Edit", edit_asset_path(@asset)%>
+<% if current_user[:id] == @asset.user_id %>
+  <%= link_to "Edit", edit_asset_path(@asset)%>
+  <%= link_to "Delete", asset_path(@asset), :method => :delete%>
+<% end %>
