@@ -1,12 +1,9 @@
-<% if user_signed_in? %>
-  <%= form_for @asset, url: {action: 'create'}, html: {class: 'new-asset'} do |f| %>
-    <%= f.label :first_name %><br />
-    <div><%= f.text_field :title %></div>
-    <%= f.label :description %><br />
-    <div><%= f.text_area :description %></div>
-    <%= f.label :url %><br />
-    <div><%= f.url_field :url %></div>
-  <% end %>
-<% else %>
-  <h1>You must sign in to create a new asset</h1>
+<%= form_for @asset, url: {action: 'create'}, html: {class: 'new-asset'} do |f| %>
+  <%= f.label :title %><br />
+  <div><%= f.text_field :title %></div>
+  <%= f.label :description %><br />
+  <div><%= f.text_area :description %></div>
+  <%= f.label :url %><br />
+  <div><%= f.url_field :url %></div>
+  <%= f.submit %>
 <% end %>

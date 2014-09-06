@@ -4,7 +4,13 @@ class AssetsController < ApplicationController
   end
 
   def new
-    @asset = Asset.new
+    if user_signed_in?
+      @asset = Asset.new
+    else
+      redirect_to user_session_path
+    end
+  end
+
   end
 
   private
