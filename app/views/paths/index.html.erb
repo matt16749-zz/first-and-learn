@@ -9,4 +9,9 @@
       </ul>
     </div>
   <% end %>
+
+  <% unless @path.nil? %>
+  <%= render partial: "_form", locals:(path: @path) %>
+  <% end %>
 <% end %>
+

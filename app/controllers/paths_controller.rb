@@ -4,7 +4,9 @@ class PathsController < ApplicationController
   end
 
   def new
+    @paths = Path.all
     @path = Path.new
+    render :index
   end
 
 private
