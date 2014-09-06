@@ -1,7 +1,7 @@
-<h1><%= @asset.title%></h1>
-<p><%= @asset.description%></p>
-<p><%= @asset.url%></p>
+<h1><%= @asset.title %></h1>
+<p><%= @asset.description %></p>
+<p><%= link_to @asset.url, @asset.url %></p>
 <% if current_user[:id] == @asset.user_id %>
-  <%= link_to "Edit", edit_asset_path(@asset)%>
-  <%= link_to "Delete", asset_path(@asset), :method => :delete%>
+  <%= link_to "Edit", edit_asset_path(@asset) %>
+  <%= link_to "Delete", asset_path(@asset), :method => :delete %>
 <% end %>
