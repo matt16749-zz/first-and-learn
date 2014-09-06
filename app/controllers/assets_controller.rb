@@ -8,6 +8,16 @@ class AssetsController < ApplicationController
     @asset = Asset.new
   end
 
+  def create
+    redirect_to user_session_path unless user_signed_in?
+
+    asset = Asset.new(asset_params)
+    asset.user_id = current_user.id
+    if asset.save
+      redirect_to assets_path
+    else
+      render :new
+    end
   end
 
   private
