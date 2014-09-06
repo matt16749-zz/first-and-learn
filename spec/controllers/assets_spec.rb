@@ -81,5 +81,11 @@ RSpec.describe AssetsController, :type => :controller do
       post :destroy, id: asset.id
       expect(response).to have_http_status(302)
     end
+
+    it 'redirects to login page if user is not logged in' do
+      asset = create(:asset)
+      post :destroy, id: asset.id
+      expect(response).to redirect_to '/users/sign_in'
+    end
   end
 end
