@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'factory_girl_rails'
+require 'devise'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -15,8 +16,10 @@ RSpec.configure do |config|
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+  config.include Devise::TestHelpers
+
   config.include FactoryGirl::Syntax::Methods
-  
+
   config.include Capybara::DSL
 
   config.use_transactional_fixtures = true
