@@ -7,6 +7,7 @@ class PathsController < ApplicationController
   end
 
   def new
+
   end
 
   def edit
