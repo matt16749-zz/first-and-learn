@@ -30,7 +30,7 @@ class AssetsController < ApplicationController
   end
 
   def update
-    redirect_to user_session_path unless user_signed_in?
+    redirect_to user_session_path and return unless user_signed_in?
     asset = Asset.find(params[:id])
     asset.update_attributes(asset_params)
 

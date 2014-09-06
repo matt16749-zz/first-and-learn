@@ -66,5 +66,11 @@ RSpec.describe AssetsController, :type => :controller do
       post :update, id: asset.id, asset: FactoryGirl.attributes_for(:asset)
       expect(response).to have_http_status(302)
     end
+
+    it 'responds successfully with an HTTP 302 status code if user is not logged in' do
+      asset = create(:asset)
+      post :update, id: asset.id, asset: FactoryGirl.attributes_for(:asset)
+      expect(response).to have_http_status(302)
+    end
   end
 end
