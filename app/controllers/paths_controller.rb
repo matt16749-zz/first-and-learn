@@ -4,29 +4,25 @@ class PathsController < ApplicationController
   end
 
   def new
-    @paths = Path.all
+    redirect_to user_session_path unless user_signed_in?
     @path = Path.new
-    render :index
   end
 
   def create
+    redirect_to user_session_path and return unless user_signed_in?
     path = Path.new(path_params)
-    if current_user
-      current_user.paths << path
-    end
+    current_user.paths << path
     redirect_to paths_path
   end
 
   def edit
+    redirect_to user_session_path unless user_signed_in?
     path = Path.find(params[:id])
-    @paths = Path.all
-    if current_user
-      @path = path
-    end
-    render :index
+    @path = path
   end
 
   def update
+    redirect_to user_session_path and return unless user_signed_in?
     path = Path.find(params[:id])
     path.update_attributes(path_params)
     path.save
@@ -38,6 +34,7 @@ class PathsController < ApplicationController
   end
 
   def destroy
+    redirect_to user_session_path and return unless user_signed_in?
     path = Path.find(params[:id])
     path.destroy
     redirect_to paths_path
