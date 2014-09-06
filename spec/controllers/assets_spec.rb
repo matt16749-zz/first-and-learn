@@ -75,7 +75,7 @@ RSpec.describe AssetsController, :type => :controller do
   end
 
   describe "POST #destroy" do
-    it 'responds successfully with an HTTP 200 status code' do
+    it 'responds successfully with an HTTP 302 status code' do
       sign_in :user, user
       asset = create(:asset)
       post :destroy, id: asset.id
