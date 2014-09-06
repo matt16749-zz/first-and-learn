@@ -29,6 +29,18 @@ class AssetsController < ApplicationController
     @asset = Asset.find(params[:id])
   end
 
+  def update
+    redirect_to user_session_path unless user_signed_in?
+    asset = Asset.find(params[:id])
+    asset.update_attributes(asset_params)
+
+    if asset.save
+      redirect_to asset_path(asset)
+    else
+      render :edit
+    end
+  end
+
   private
   def asset_params
     params.require(:asset).permit(:title, :description, :url)
