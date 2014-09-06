@@ -11,22 +11,28 @@ class PathsController < ApplicationController
   def create
     redirect_to user_session_path and return unless user_signed_in?
     path = Path.new(path_params)
-    current_user.paths << path
-    redirect_to paths_path
+    path.user_id = current_user.id
+    if path.save
+      redirect_to paths_path
+    else
+      render :new
+    end
   end
 
   def edit
     redirect_to user_session_path unless user_signed_in?
-    path = Path.find(params[:id])
-    @path = path
+    @path = Path.find(params[:id])
   end
 
   def update
     redirect_to user_session_path and return unless user_signed_in?
     path = Path.find(params[:id])
     path.update_attributes(path_params)
-    path.save
-    redirect_to paths_path
+    if path.save
+      redirect_to paths_path
+    else
+      render :edit
+    end
   end
 
   def show
