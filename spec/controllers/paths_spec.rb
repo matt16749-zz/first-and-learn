@@ -29,7 +29,7 @@ RSpec.describe PathsController, :type => :controller do
     end
   end
 
-  describe "Post#create" do
+  describe "POST #create" do
     before(:each) do
       user = create(:user)
       sign_in :user, user
