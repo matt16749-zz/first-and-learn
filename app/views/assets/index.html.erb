@@ -3,10 +3,12 @@
 <% else %>
   <% @assets.each do |asset| %>
     <div class="asset">
-      <ul>
-        <li><a href="<%= asset.url %>"><%= asset.title %></a></li>
-        <li><%= asset.description %></li>
-      </ul>
+      <h3><%= asset.title %></h3>
+      <p>
+        <%= link_to "Details", asset_path(asset) %>
+        <a href="<%= asset.url %>">View Asset</a>
+      </p>
+      <p><%= asset.description %></p>
     </div>
   <% end %>
 <% end %>
