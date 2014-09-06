@@ -24,6 +24,10 @@ class AssetsController < ApplicationController
     end
   end
 
+  def edit
+    redirect_to user_session_path unless user_signed_in?
+    @asset = Asset.find(params[:id])
+  end
 
   private
   def asset_params
