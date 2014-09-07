@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :commentable
+  before_action :redirect_to_sign_up, only: [:new, :create, :destroy]
 
   def index
     @comments = @commentable.comments
@@ -10,12 +11,10 @@ class CommentsController < ApplicationController
   end
 
   def new
-    redirect_to user_session_path unless user_signed_in?
     @comment = Comment.new
   end
 
   def create
-    redirect_to user_session_path and return unless user_signed_in?
     comment = @commentable.comments.build(comment_params)
     comment.user_id = current_user.id
     if comment.save
@@ -27,7 +26,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    redirect_to user_session_path and return unless user_signed_in?
     comment = Comment.find(params[:id])
     if comment.destroy
       redirect_to polymorphic_path(@commentable)
@@ -50,5 +48,9 @@ class CommentsController < ApplicationController
       end
     end
     nil
+  end
+
+  def redirect_to_sign_up
+    redirect_to user_session_path and return unless user_signed_in?
   end
 end
