@@ -52,5 +52,10 @@ RSpec.describe StepsController, :type => :controller do
       post :create, step: FactoryGirl.attributes_for(:step), path_id: path.id, asset: {asset_id: asset.id}
       expect(response).to have_http_status(302)
     end
+
+    it 'should redirect user to login page if not logged in' do
+      post :create, step: FactoryGirl.attributes_for(:step), path_id: path.id, asset: {asset_id: asset.id}
+      expect(response).to redirect_to '/users/sign_in'
+    end
   end
 end
