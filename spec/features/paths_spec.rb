@@ -40,4 +40,26 @@ feature 'Creating New Paths' do
     click_button "Create Path"
     expect(page).to have_link "SaltnPepa"
   end
+
+  scenario "Allows Users to click a new path link" do
+    visit '/paths'
+    click_link "Create New Path"
+    fill_in "Title", with: "Tracy Chapman"
+    fill_in "Description", with: "Give Me One Reason"
+    click_button "Create Path"
+    click_link "Tracy Chapman"
+    expect(page).to have_content "Tracy Chapman"
+    expect(page).to have_content "Give Me One Reason"
+  end
+
+  scenario "Allows Users to click back from path link" do
+    visit '/paths'
+    click_link "Create New Path"
+    fill_in "Title", with: "Stevie Wonder"
+    fill_in "Description", with: "Isn't She Lovely"
+    click_button "Create Path"
+    click_link "Stevie Wonder"
+    click_link "Back"
+    expect(page).to have_link "Stevie Wonder"
+  end
 end
