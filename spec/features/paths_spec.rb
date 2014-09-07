@@ -122,5 +122,20 @@ feature "Path Comments" do
     expect(page).to have_link "Back"
     expect(page).to have_link "Destroy"
   end
+
+  scenario "Destroy Individual Comment" do
+    visit '/paths'
+    click_link "Create New Path"
+    fill_in "Title", with: "MR."
+    fill_in "Description", with: "T"
+    click_button "Create Path"
+    click_link "MR."
+    click_link "New Comment"
+    fill_in "Body", with: "Respect your mother"
+    click_button "Submit"
+    click_link "Respect your mother"
+    click_link "Destroy"
+    expect(page).to_not have_link "MR."
+  end
 end
 
