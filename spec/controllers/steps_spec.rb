@@ -3,13 +3,14 @@ require 'rails_helper'
 RSpec.describe StepsController, :type => :controller do
   let(:user) { create(:user) }
   let(:asset) { create(:asset) }
-  let(:step) { create(:step) }
   let(:path) { create(:path) }
+  let(:step) { create(:step) }
 
   before :each do
     User.destroy_all
     Asset.destroy_all
     Step.destroy_all
+    Path.destroy_all
   end
 
   describe "GET #show" do
