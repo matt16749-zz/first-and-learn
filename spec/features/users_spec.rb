@@ -1,5 +1,4 @@
 require 'rails_helper'
-Warden.test_mode!
 
 feature 'Index page' do
   scenario 'Shows the index page' do
