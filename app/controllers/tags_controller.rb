@@ -1,17 +1,20 @@
 class TagsController < ApplicationController
+  before_action :redirect_to_sign_up, only: [:new, :create]
   def new
-    redirect_to user_session_path unless user_signed_in?
     @tag = Tag.new
   end
 
   def create
-    redirect_to user_session_path unless user_signed_in?
     @tag = Tag.create(tags_params)
     render :new
   end
+
   private
   def tags_params
     params.require(:tag).permit(:name)
   end
 
+  def redirect_to_sign_up
+    redirect_to new_user_session_path and return unless user_signed_in?
+  end
 end
