@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   include ApplicationHelper
   before_action :commentable
   before_action :redirect_to_sign_up, only: [:new, :create, :destroy]
+  before_action :check_owner, only: [:destroy]
 
   def index
     @comments = @commentable.comments
@@ -47,5 +48,12 @@ class CommentsController < ApplicationController
       end
     end
     nil
+  end
+
+  def check_owner
+    unless Comment.find(params[:id]).user_id == current_user.id
+      flash[:alert] = "You cannot destroy a comment you do not own!"
+      redirect_to paths_path and return
+    end
   end
 end
