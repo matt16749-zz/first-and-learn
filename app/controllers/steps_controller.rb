@@ -25,7 +25,7 @@ class StepsController < ApplicationController
   end
 
   def edit
-    redirect_to new_user_session_path unless user_signed_in?
+    redirect_to new_user_session_path and return unless user_signed_in?
     @step = Step.find(params[:id])
     @path = Path.find(params[:path_id])
     @assets = Asset.where("user_id = ?", current_user.id)
