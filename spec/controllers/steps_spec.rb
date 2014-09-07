@@ -39,5 +39,10 @@ RSpec.describe StepsController, :type => :controller do
       get :new, path_id: path.id, id: step.id
       expect(response).to have_http_status(200)
     end
+
+    it 'redirects user to login page if not logged in' do
+      get :new, path_id: path.id, id: step.id
+      expect(response).to redirect_to '/users/sign_in'
+    end
   end
 end
