@@ -19,6 +19,10 @@ class StepsController < ApplicationController
     end
   end
 
+  def show
+    @step = Step.find(params[:id])
+  end
+
   private
   def steps_params
     params.require(:step).permit(:body, :position)
