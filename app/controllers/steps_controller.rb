@@ -10,8 +10,9 @@ class StepsController < ApplicationController
   def create
     redirect_to new_user_session_path and return unless user_signed_in?
     step = Step.new(steps_params)
-    step.update_attributes(asset_id: params['<option value='], path_id: params[:path_id])
+    step.update_attributes(asset_id: params[:asset][:asset_id], path_id: params[:path_id])
     step.get_position
+
     if step.save
       redirect_to path_path params[:path_id]
     else

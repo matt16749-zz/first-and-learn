@@ -2,6 +2,6 @@
   <%= f.label :body %><br />
   <%= f.text_area :body %><br />
   <%= label_tag 'Select Asset' %><br />
-  <%= select_tag options_from_collection_for_select(@assets, :id, :title) %>
+  <%= select("asset", "asset_id", @assets.collect {|a| [ a.title, a.id ] }) %>
   <%= f.submit %>
 <% end %>
