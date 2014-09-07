@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       flash[:notice] = "Successfully created comment."
-      redirect_to :id => nil
+      redirect_to polymorphic_path(@commentable)
     else
       render :action => 'new'
     end
@@ -29,8 +29,9 @@ class CommentsController < ApplicationController
   def destroy
     redirect_to user_session_path and return unless user_signed_in?
     comment = Comment.find(params[:id])
-    comment.destroy
-    redirect_to path_comments_path
+    if comment.destroy
+      redirect_to polymorphic_path(@commentable)
+    end
   end
 
   private
