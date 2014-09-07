@@ -75,12 +75,12 @@ RSpec.describe StepsController, :type => :controller do
   describe "POST #destroy" do
     it 'responds successfully with an HTTP 302 status code' do
       sign_in :user, user
-      post :destroy, id: step.id
+      post :destroy, path_id: path.id, id: step.id
       expect(response).to have_http_status(302)
     end
 
     it 'redirects to login page if user is not logged in' do
-      post :destroy, id: step.id
+      post :destroy, path_id: path.id, id: step.id
       expect(response).to redirect_to '/users/sign_in'
     end
   end

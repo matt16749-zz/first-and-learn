@@ -41,6 +41,11 @@ class StepsController < ApplicationController
     end
   end
 
+  def destroy
+    Step.find(params[:id]).destroy
+    redirect_to path_path params[:path_id]
+  end
+
   private
   def steps_params
     params.require(:step).permit(:body, :position)
