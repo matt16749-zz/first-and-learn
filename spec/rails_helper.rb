@@ -14,12 +14,14 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include Warden::Test::Helpers
 
   config.include FactoryGirl::Syntax::Methods
 
   config.include Capybara::DSL
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, :type => :controller
+
 
   config.use_transactional_fixtures = true
 
