@@ -20,8 +20,7 @@ feature 'Creating New Paths' do
   scenario "Redirect User to Log in if not signed in" do
     logout(:user)
     visit '/paths'
-    click_link "Create New Path"
-    expect(page).to have_content "Log in"
+    expect(page).to_not have_button "Create New Path"
   end
 
   scenario "Show Create New Path Form if Signed In" do
