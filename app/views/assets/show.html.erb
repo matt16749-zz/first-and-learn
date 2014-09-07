@@ -5,3 +5,8 @@
   <%= link_to "Edit", edit_asset_path(@asset) %>
   <%= link_to "Delete", asset_path(@asset), :method => :delete %>
 <% end %>
+
+<h3>Comments:</h3>
+<% @asset.comments.each do |comment|%>
+  <%= link_to comment.body, polymorphic_path([@asset, comment]) %><br>
+<% end %>
