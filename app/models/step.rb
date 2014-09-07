@@ -4,9 +4,6 @@ class Step < ActiveRecord::Base
 
   validates :path_id, :asset_id, :body, presence: true
 
-  # before_validation :get_position
-
-  # private
   def get_position
     steps = Path.find(self.path_id).steps
     if steps.length > 1
