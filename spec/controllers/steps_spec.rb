@@ -45,4 +45,12 @@ RSpec.describe StepsController, :type => :controller do
       expect(response).to redirect_to '/users/sign_in'
     end
   end
+
+  describe "POST #create" do
+    it 'should redirect and provide status 302 upon step creation' do
+      sign_in :user, user
+      post :create, step: FactoryGirl.attributes_for(:step), path_id: path.id, asset: {asset_id: asset.id}
+      expect(response).to have_http_status(302)
+    end
+  end
 end
