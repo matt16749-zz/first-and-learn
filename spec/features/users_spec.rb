@@ -3,7 +3,9 @@ require 'rails_helper'
 feature 'Index page' do
   scenario 'Shows the index page' do
     visit '/'
-    expect(page).to have_content "First and Learn"
+    expect(page).to have_content "First"
+    expect(page).to have_content "and"
+    expect(page).to have_content "Learn"
   end
 end
 
@@ -47,7 +49,10 @@ feature 'Sign in' do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Log in"
-    expect(page).to have_content "Signed in successfully. First and Learn"
+    expect(page).to have_content "Signed in successfully."
+    expect(page).to have_content "First"
+    expect(page).to have_content "and"
+    expect(page).to have_content "Learn"
   end
 end
 
