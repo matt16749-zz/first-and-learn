@@ -26,10 +26,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    if comment.destroy
-      redirect_to polymorphic_path(@commentable)
-    end
+    Comment.find(params[:id]).destroy
+    redirect_to polymorphic_path(@commentable)
   end
 
   private
