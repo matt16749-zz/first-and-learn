@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  include ApplicationHelper
   before_action :commentable
   before_action :redirect_to_sign_up, only: [:new, :create, :destroy]
 
@@ -46,9 +47,5 @@ class CommentsController < ApplicationController
       end
     end
     nil
-  end
-
-  def redirect_to_sign_up
-    redirect_to user_session_path and return unless user_signed_in?
   end
 end

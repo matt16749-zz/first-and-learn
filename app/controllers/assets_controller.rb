@@ -1,4 +1,5 @@
 class AssetsController < ApplicationController
+  include ApplicationHelper
   before_action :redirect_to_sign_up, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -46,9 +47,5 @@ class AssetsController < ApplicationController
   private
   def asset_params
     params.require(:asset).permit(:title, :description, :url)
-  end
-
-  def redirect_to_sign_up
-    redirect_to user_session_path and return unless user_signed_in?
   end
 end

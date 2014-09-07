@@ -1,4 +1,5 @@
 class StepsController < ApplicationController
+  include ApplicationHelper
   before_action :redirect_to_sign_up, only: [:new, :create, :edit, :update, :destroy]
 
   def new
@@ -49,9 +50,5 @@ class StepsController < ApplicationController
   private
   def steps_params
     params.require(:step).permit(:body, :position)
-  end
-
-  def redirect_to_sign_up
-    redirect_to new_user_session_path and return unless user_signed_in?
   end
 end
