@@ -14,6 +14,64 @@
  *= require_self
  */
 
+/****************NAVBAR STYLES************/
 .navbar-item{
   margin-left: 2em;
+  height: 8em;
+}
+
+.navbar-nav{
+  margin-top: 2em;
+  margin-left: 3em;
+}
+
+.navbar-brand{
+  font-family: 'Roboto Slab', serif;
+  font-size:1.3em;
+}
+
+
+/****************LOGO STYLES*************/
+.logo{
+  font-family: 'Roboto Slab', serif;
+/*  border: black 1px solid;*/
+  position:absolute;
+  left:0;
+  margin-left:2em;
+  border: 1px solid lightgray;
+  text-align: center;
+  padding: 0.1em;
+  font-size: 30px;
+}
+
+#logo-span{
+  font-size: 18px;
+}
+
+
+/****************BUTTON MENU*************/
+
+.button-menu{
+  list-style: none;
+}
+
+.button-menu li{
+  float:left;
+  margin-left: 15em;
+  position:relative;
+}
+
+.blue-buttons{
+  height:3em;
+  width:8em;
+  background-color:#659CEF;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  color:whitesmoke;
+  font-size: 1.2em;
+}
+
+.blue-buttons a{
+  color:whitesmoke;
+  font-size: 1.2em;
 }
