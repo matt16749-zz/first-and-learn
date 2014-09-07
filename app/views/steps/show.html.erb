@@ -1,0 +1,6 @@
+<h1><%= @step.body %></h1>
+<p><%= link_to "Step's Path", path_path(@step.path_id) %></p>
+<% if current_user && current_user.id == @step.path.user_id %>
+  <%= link_to "Edit", edit_path_step_path(@step.path_id, @step) %>
+  <%= link_to "Delete", path_step_path(@step.path_id, @step), :method => :delete %>
+<% end %>
