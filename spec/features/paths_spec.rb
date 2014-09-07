@@ -62,4 +62,65 @@ feature 'Creating New Paths' do
     click_link "Back"
     expect(page).to have_link "Stevie Wonder"
   end
+
+  scenario "Allows Users to delete path" do
+    visit '/paths'
+    click_link "Create New Path"
+    fill_in "Title", with: "The Band Perry"
+    fill_in "Description", with: "If I Die Young"
+    click_button "Create Path"
+    click_link "The Band Perry"
+    click_link "Delete Path"
+    expect(page).to_not have_link "The Band Perry"
+  end
 end
+
+feature "Path Comments" do
+  before(:each) do
+    user = create(:user)
+    login_as(user, :scope => :user)
+  end
+
+  scenario "Show New Comment Form" do
+    visit '/paths'
+    click_link "Create New Path"
+    fill_in "Title", with: "Jackson 5"
+    fill_in "Description", with: "I Want You Back"
+    click_button "Create Path"
+    click_link "Jackson 5"
+    click_link "New Comment"
+    expect(page).to have_content "New Comment"
+    expect(page).to have_content "Body"
+    expect(page).to have_button "Submit"
+  end
+
+  scenario "Create a New Comment" do
+    visit '/paths'
+    click_link "Create New Path"
+    fill_in "Title", with: "Cups"
+    fill_in "Description", with: "Anna Kendrick"
+    click_button "Create Path"
+    click_link "Cups"
+    click_link "New Comment"
+    fill_in "Body", with: "No Diggity"
+    click_button "Submit"
+    expect(page).to have_link "No Diggity"
+  end
+
+  scenario "View Individual Comment" do
+    visit '/paths'
+    click_link "Create New Path"
+    fill_in "Title", with: "ALL"
+    fill_in "Description", with: "CAPS"
+    click_button "Create Path"
+    click_link "ALL"
+    click_link "New Comment"
+    fill_in "Body", with: "MR. T"
+    click_button "Submit"
+    click_link "MR. T"
+    expect(page).to have_content "MR. T"
+    expect(page).to have_link "Back"
+    expect(page).to have_link "Destroy"
+  end
+end
+
