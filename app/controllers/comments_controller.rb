@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :commentable
+
   def index
-    @commentable = find_commentable
     @comments = @commentable.comments
   end
 
@@ -9,11 +10,12 @@ class CommentsController < ApplicationController
   end
 
   def new
+    redirect_to user_session_path unless user_signed_in?
     @comment = Comment.new
   end
 
   def create
-    @commentable = find_commentable
+    redirect_to user_session_path and return unless user_signed_in?
     @comment = @commentable.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
@@ -34,6 +36,10 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:id, :body, :user_id, :commentable_type, :commentable_id)
+  end
+
+  def commentable
+    @commentable = find_commentable
   end
 
   def find_commentable
