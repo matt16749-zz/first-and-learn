@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AssetsController, :type => :controller do
   let(:user) { create(:user) }
-  let(:asset) { create(:asset) }
+  let(:asset) { create(:asset, user_id: user.id) }
 
   before :each do
     User.destroy_all
