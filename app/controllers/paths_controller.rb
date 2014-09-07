@@ -1,6 +1,7 @@
 class PathsController < ApplicationController
   include ApplicationHelper
   before_action :redirect_to_sign_up, only: [:new, :create, :update, :edit, :destroy]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
     @paths = Path.all
@@ -46,5 +47,12 @@ class PathsController < ApplicationController
 private
   def path_params
     params.require(:path).permit(:title, :description, :user_id)
+  end
+
+  def check_owner
+    unless Path.find(params[:id]).user_id == current_user.id
+      flash[:alert] = "You cannot edit or destroy a path you do not own!"
+      redirect_to paths_path and return
+    end
   end
 end
