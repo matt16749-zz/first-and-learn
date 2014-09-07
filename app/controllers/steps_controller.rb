@@ -29,6 +29,18 @@ class StepsController < ApplicationController
     @assets = Asset.where("user_id = ?", current_user.id)
   end
 
+  def update
+    step = Step.find(params[:id])
+    step.update_attributes(steps_params)
+    step.asset_id = params[:asset][:asset_id]
+
+    if step.save
+      redirect_to path_path params[:path_id]
+    else
+      render :edit
+    end
+  end
+
   private
   def steps_params
     params.require(:step).permit(:body, :position)

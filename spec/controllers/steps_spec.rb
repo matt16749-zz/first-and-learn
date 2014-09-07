@@ -62,12 +62,12 @@ RSpec.describe StepsController, :type => :controller do
   describe "POST #update" do
     it 'should redirect and provide status 302 upon step update' do
       sign_in :user, user
-      post :update, step: FactoryGirl.attributes_for(:step), path_id: path.id, asset: {asset_id: asset.id}
+      post :update, id: step.id, step: FactoryGirl.attributes_for(:step), path_id: path.id, asset: {asset_id: asset.id}
       expect(response).to have_http_status(302)
     end
 
     it 'should redirect user to login page if not logged in' do
-      post :update, step: FactoryGirl.attributes_for(:step), path_id: path.id, asset: {asset_id: asset.id}
+      post :update, id: step.id, step: FactoryGirl.attributes_for(:step), path_id: path.id, asset: {asset_id: asset.id}
       expect(response).to redirect_to '/users/sign_in'
     end
   end
