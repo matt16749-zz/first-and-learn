@@ -1,6 +1,7 @@
 class StepsController < ApplicationController
   include ApplicationHelper
   before_action :redirect_to_sign_up, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_owner, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @step = Step.new
@@ -16,6 +17,9 @@ class StepsController < ApplicationController
     if step.save
       redirect_to path_path params[:path_id]
     else
+      @step = Step.new
+      @path = Path.find(params[:path_id])
+      @assets = Asset.where('user_id = ?', current_user.id)
       render :new
     end
   end
@@ -50,5 +54,12 @@ class StepsController < ApplicationController
   private
   def steps_params
     params.require(:step).permit(:body, :position)
+  end
+
+  def check_owner
+    unless Path.find(params[:path_id]).user_id == current_user.id
+      flash[:alert] = "You cannot create/edit/destroy a step of a path you do not own!"
+      redirect_to paths_path and return
+    end
   end
 end
