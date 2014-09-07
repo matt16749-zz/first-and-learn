@@ -2,11 +2,33 @@
 <html>
 <head>
   <title>FirstAndLearn</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="navbar navbar-default">
+  <div class="container" id="navbar-container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collaps" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <h1 class="logo">First<br><span id="logo-span">and</span><br>Learn</h1>
+      <ul class="nav navbar-nav">
+        <li class="navbar-item"><a class="navbar-brand" href="/">Take Me Home</a></li>
+        <li class="navbar-item"><a class="navbar-brand" href="/paths/new">Forge a New Path</a></li>
+        <li class="navbar-item"><a class="navbar-brand" href="/paths">Change a Path</a></li>
+        <li class="navbar-item"><a class="navbar-brand" href="/paths">Explore Other Paths</a></li>
+      </ul>
+  </div>
+</div>
   <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
 <%= yield %>
