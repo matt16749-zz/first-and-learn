@@ -1,4 +1,7 @@
 # First and Learn
+
+[![Build Status](https://semaphoreapp.com/api/v1/projects/933a4080-401e-46c5-b443-8d034cda6ee1/242512/shields_badge.png)](https://semaphoreapp.com/matt16749/first-and-learn)
+
 [Kanban Board on Trello](https://trello.com/b/jTBSxwLD/first-and-learn)
 
 --------------------------------------------------------------------------------------------------------

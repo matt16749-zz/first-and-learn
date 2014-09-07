@@ -1,0 +1,7 @@
+<%= form_for [@path, @step] do |f| %>
+  <%= f.label :body %><br />
+  <%= f.text_area :body %><br />
+  <%= label_tag 'Select Asset' %><br />
+  <%= select("asset", "asset_id", @assets.collect {|a| [ a.title, a.id ] }, selected: @step.asset_id)%>
+  <%= f.submit %>
+<% end %>
