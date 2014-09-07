@@ -1,17 +1,22 @@
 <% if @paths.nil? %>
   <h1>There are currently no paths to display!</h1>
 <% else %>
+  <% if current_user %>
+    <button class="styled-button pad-edge" id="new-path-button"><%= link_to "Create New Path", new_path_path %></button>
+  <% else %>
+      <p>Sign in to create a path</p>
+  <% end %>
   <% @paths.each do |path| %>
-    <div class="path">
-      <ul>
-        <li><%= link_to path.title, path_path(path) %>
-        <% if current_user && current_user.id == path.user_id %>
-          <%= link_to "Edit Path", edit_path_path(path) %></li>
-        <% end %>
-        <li><%= path.description %></li>
+      <ul class="path-list">
+        <div class="path-item">
+          <li class="path-title"><%= link_to path.title, path_path(path) %></li>
+          <li class="path-author">Created by: <%= path.user.first_name %></li>
+          <li class="path-description"><%= path.description %></li>
+          <% if current_user && current_user.id == path.user_id %>
+            <li><button class="styled-button"><%= link_to "Edit Path", edit_path_path(path) %></button></li>
+          <% end %>
+        </div>
       </ul>
-    </div>
   <% end %>
 <% end %>
 
-<%= link_to "Create New Path", new_path_path %>

@@ -14,6 +14,18 @@
  *= require_self
  */
 
+.styled-button{
+  background-color: #659CEF;
+  border:none;
+
+}
+.styled-button a{
+  color: white;
+}
+
+
+
+
 /****************NAVBAR STYLES************/
 .navbar-item{
   margin-left: 2em;
@@ -49,29 +61,38 @@
 }
 
 
-/****************BUTTON MENU*************/
+/****************PATHS INDEX*************/
 
-.button-menu{
+.path-list{
   list-style: none;
 }
 
-.button-menu li{
-  float:left;
-  margin-left: 15em;
-  position:relative;
+.path-title a{
+  color:#659CEF;
+  font-size: 1.7em;
+  border-bottom: 1px solid lightgray;
 }
 
-.blue-buttons{
-  height:3em;
-  width:8em;
-  background-color:#659CEF;
+.path-description{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 1.3em;
+}
+
+.path-item{
+  border:1px lightgray solid;
   border-radius: 5px;
-  border: 1px solid lightgray;
-  color:whitesmoke;
-  font-size: 1.2em;
+  padding: 0.5em;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
-.blue-buttons a{
-  color:whitesmoke;
-  font-size: 1.2em;
+#new-path-button{
+  margin-left: 43%;
+  margin-bottom: 2em;
+  font-size: 1.3em;
+  height: 3em;
+  width: 14em;
 }
