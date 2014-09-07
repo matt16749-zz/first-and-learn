@@ -38,8 +38,7 @@ class PathsController < ApplicationController
   end
 
   def destroy
-    path = Path.find(params[:id])
-    path.destroy
+    Path.find(params[:id]).destroy
     redirect_to paths_path
   end
 
