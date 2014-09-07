@@ -16,9 +16,9 @@ class CommentsController < ApplicationController
 
   def create
     redirect_to user_session_path and return unless user_signed_in?
-    @comment = @commentable.comments.build(comment_params)
-    @comment.user_id = current_user.id
-    if @comment.save
+    comment = @commentable.comments.build(comment_params)
+    comment.user_id = current_user.id
+    if comment.save
       flash[:notice] = "Successfully created comment."
       redirect_to polymorphic_path(@commentable)
     else
