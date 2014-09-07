@@ -4,7 +4,10 @@
   <% @paths.each do |path| %>
     <div class="path">
       <ul>
-        <li><%= link_to path.title, path_path(path) %><%= link_to "Edit Path", edit_path_path(path) %></li>
+        <li><%= link_to path.title, path_path(path) %>
+        <% if current_user && current_user.id == path.user_id %>
+          <%= link_to "Edit Path", edit_path_path(path) %></li>
+        <% end %>
         <li><%= path.description %></li>
       </ul>
     </div>
