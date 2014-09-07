@@ -1,12 +1,21 @@
-<h1>Your Path</h1>
+<h1><%= @path.title %></h1>
+<h3><%= @path.description %></h3>
+
 <p>Created by: <%= @path.user.first_name %></p>
-<p><%= @path.title %></p>
-<%= @path.description %>
-<p>Steps:</p>
+
+<% if current_user && current_user[:id] == @path.user_id %>
+  <button><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
+<% end %>
+
+<button><%= link_to "Back", paths_path %></button>
+
+<h3>Steps:</h3>
 <% @path.steps.each do |step|%>
   <p><%= step.body %></p>
 <% end %>
-<% if current_user && current_user[:id] == @path.user_id %>
-  <button><%= link_to "delete", path_path(@path), :method => :delete %></button>
+
+<h3>Comments:</h3>
+<% @path.comments.each do |comment|%>
+  <p><%= link_to comment.body, polymorphic_path([@path, comment]) %></p>
 <% end %>
-<button><%= link_to "back", paths_path %></button>
+<button><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
