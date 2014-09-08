@@ -149,3 +149,10 @@
   color:#659CEF;
   border-bottom: 1px solid lightgray;
 }
+
+/****************COMMENT STYLES************/
+
+.comment{
+  margin-left:20%;
+  margin-right:20%;
+}
