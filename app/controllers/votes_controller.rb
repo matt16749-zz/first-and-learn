@@ -4,7 +4,7 @@ class VotesController < ApplicationController
   def create
     type = params[:voteableType]
     votes = type.classify.constantize.find(params[:voteableId]).votes.where(user_id: current_user.id)
-    if votes.count < 1
+    if votes.count < 1 && user_signed_in?
       vote = Vote.new()
       vote.user_id = current_user.id
       vote.vote_state = params[:voteState]
