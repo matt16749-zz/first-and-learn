@@ -150,6 +150,22 @@
   border-bottom: 1px solid lightgray;
 }
 
+.step-body{
+  font-size: 1.5em;
+  font-weight: bold;
+  border-bottom: 1px solid #D4D3D3;
+}
+
+.asset-link{
+  font-size: 1.5em;
+}
+
+.asset-description{
+  font-size: 1.2em;
+  width: 30em;
+  margin-bottom: 1.5em;
+}
+
 /****************COMMENT STYLES************/
 
 .comment{
