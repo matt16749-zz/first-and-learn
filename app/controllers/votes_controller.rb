@@ -8,15 +8,22 @@ class VotesController < ApplicationController
   end
 
   def create
-    if current_user
+    type = params[:voteableType]
+    votes = type.classify.constantize.find(params[:voteableId]).votes.where(user_id: current_user.id)
+    if votes.count < 1
       vote = Vote.new()
       vote.user_id = current_user.id
       vote.vote_state = params[:voteState]
       vote.voteable_id = params[:voteableId]
       vote.voteable_type = params[:voteableType]
-      vote.save
+
+      if vote.save
+        render json: {vote_count: vote_count(vote.voteable_id, vote.voteable_type)}
+      end
+    else
+      flash[:alert] = "You can only vote once on a given item."
+      render nothing: true
     end
-    render json: {vote_count: vote_count(vote.voteable_id, vote.voteable_type)}
   end
 
   def update
