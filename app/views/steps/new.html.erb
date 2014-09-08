@@ -5,7 +5,7 @@
     <p>
       Assets are required to create steps for paths and you have yet to create any.  Please follow the link below and create some before continuing.
     </p>
-    <button><%= link_to "Assets", assets_path %></button>
+    <button class="styled-button"><%= link_to "Assets", assets_path %></button>
   <% else %>
     <%= form_for [@path, @step] do |f| %>
       <%= f.label :step %><br />
