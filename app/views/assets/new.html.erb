@@ -1,6 +1,6 @@
 <div class="login">
   <h2 class="path-header">New Asset</h2>
-  <%= form_for @asset, url: {action: 'create'}, html: {class: 'new-asset'} do |f| %>
+  <%= form_for @asset, class: 'new-asset' do |f| %>
     <%= f.label :title %><br />
     <div><%= f.text_field :title %></div>
     <%= f.label :description %><br />
