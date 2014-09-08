@@ -4,7 +4,7 @@ class AssetsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
-    @assets = Asset.where("user_id = ?", current_user.id)
+    @assets = Asset.where(user_id: current_user.id)
   end
 
   def show
@@ -17,8 +17,7 @@ class AssetsController < ApplicationController
   end
 
   def create
-    asset = Asset.new(asset_params)
-    asset.user_id = current_user.id
+    asset = Asset.new(asset_params.merge(user_id: current_user.id))
     if asset.save
       redirect_to assets_path
     else
