@@ -1,10 +1,10 @@
 class AssetsController < ApplicationController
   include ApplicationHelper
-  before_action :redirect_to_sign_up, only: [:new, :create, :edit, :update, :destroy]
+  before_action :redirect_to_sign_up
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
-    @assets = Asset.all
+    @assets = Asset.where("user_id = ?", current_user.id)
   end
 
   def show
