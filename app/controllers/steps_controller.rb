@@ -6,20 +6,20 @@ class StepsController < ApplicationController
   def new
     @step = Step.new
     @path = Path.find(params[:path_id])
-    @assets = Asset.where('user_id = ?', current_user.id)
+    @assets = Asset.where(user_id: current_user.id)
   end
 
   def create
     step = Step.new(steps_params)
-    step.update_attributes(asset_id: params[:asset][:asset_id], path_id: params[:path_id])
-    step.get_position
+    step.update(asset_id: params[:asset][:asset_id], path_id: params[:path_id])
+    step.get_position_and_update!
 
     if step.save
       redirect_to path_path params[:path_id]
     else
       @step = Step.new
       @path = Path.find(params[:path_id])
-      @assets = Asset.where('user_id = ?', current_user.id)
+      @assets = Asset.where(user_id: current_user.id)
       render :new
     end
   end
@@ -31,7 +31,7 @@ class StepsController < ApplicationController
   def edit
     @step = Step.find(params[:id])
     @path = Path.find(params[:path_id])
-    @assets = Asset.where("user_id = ?", current_user.id)
+    @assets = Asset.where(user_id: current_user.id)
   end
 
   def update
