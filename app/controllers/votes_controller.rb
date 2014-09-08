@@ -15,7 +15,7 @@ class VotesController < ApplicationController
       vote.voteable_type = params[:voteableType]
       vote.save
     end
-    render json: vote
+    render json: {vote_count: vote_count(vote.voteable_id, vote.voteable_type)}
   end
 
   def update
@@ -42,9 +42,9 @@ private
   end
 
   def vote_count(voteable_id, voteable_type)
-    all_votes = voteable_type.classify.constantize.find(voteable_id).votes
-    up_votes = all_votes.select { |vote| vote.vote_state }
-    down_votes = all_votes.select { |vote| !vote.vote_state }
+    class_name = voteable_type.classify.constantize
+    up_votes = class_name.find(voteable_id).votes.where(vote_state: true)
+    down_votes = class_name.find(voteable_id).votes.where(vote_state: false)
     up_votes.count - down_votes.count
   end
 end
