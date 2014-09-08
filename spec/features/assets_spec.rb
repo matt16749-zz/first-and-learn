@@ -5,7 +5,7 @@ feature 'Assets' do
     login_as(user, :scope => :user)
   end
 
-  feature 'Creating Assets' do 
+  feature 'Viewing Assets' do 
     scenario 'Does not let you create assets if not logged in' do 
       logout(:user)
       visit '/assets'
@@ -16,5 +16,4 @@ feature 'Assets' do
       expect(page).to have_button "Create Asset"  
     end
   end
-
 end
