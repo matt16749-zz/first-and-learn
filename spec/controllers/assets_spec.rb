@@ -25,7 +25,7 @@ RSpec.describe AssetsController, :type => :controller do
     end
 
     it "redirects to login page if user is not logged in do" do
-      get :show
+      get :show, {:id => asset.id}
       expect(response).to redirect_to '/users/sign_in'
     end
   end
