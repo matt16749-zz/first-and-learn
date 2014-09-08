@@ -1,14 +1,14 @@
 <%= form_for(@path) do |f| %>
  <ul>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
+  <%= f.label :title, :class=>"input-label" %><br>
+  <%= f.text_area :title, :class=>"title-field" %>
 </ul>
  <ul>
-  <%= f.label :description %><br>
-  <%= f.text_field :description %>
+  <%= f.label :description, :class=>"input-label" %><br>
+  <%= f.text_area :description, :class=>"description-field", :cols => 10, :rows => 10 %>
 </ul>
 
  <ul>
-  <%= f.submit %><br>
+  <%= f.submit "Create Path", :class=>"styled-button create-path-button" %>
 </ul>
 <% end %>
