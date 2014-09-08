@@ -41,4 +41,10 @@ private
     nil
   end
 
+  def vote_count(voteable_id, voteable_type)
+    all_votes = voteable_type.classify.constantize.find(voteable_id).votes
+    up_votes = all_votes.select { |vote| vote.vote_state }
+    down_votes = all_votes.select { |vote| !vote.vote_state }
+    up_votes.count - down_votes.count
+  end
 end
