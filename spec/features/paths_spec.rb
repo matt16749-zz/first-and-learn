@@ -37,7 +37,7 @@ feature 'Creating New Paths' do
     fill_in "Title", with: "SaltnPepa"
     fill_in "Description", with: "Push it"
     click_button "Create Path"
-    expect(page).to have_link "SaltnPepa"
+    expect(page).to have_content "SaltnPepa"
   end
 
   scenario "Allows Users to click a new path link" do
@@ -46,7 +46,6 @@ feature 'Creating New Paths' do
     fill_in "Title", with: "Tracy Chapman"
     fill_in "Description", with: "Give Me One Reason"
     click_button "Create Path"
-    click_link "Tracy Chapman"
     expect(page).to have_content "Tracy Chapman"
     expect(page).to have_content "Give Me One Reason"
   end
@@ -57,7 +56,6 @@ feature 'Creating New Paths' do
     fill_in "Title", with: "Stevie Wonder"
     fill_in "Description", with: "Isn't She Lovely"
     click_button "Create Path"
-    click_link "Stevie Wonder"
     click_link "Back"
     expect(page).to have_link "Stevie Wonder"
   end
@@ -68,7 +66,6 @@ feature 'Creating New Paths' do
     fill_in "Title", with: "The Band Perry"
     fill_in "Description", with: "If I Die Young"
     click_button "Create Path"
-    click_link "The Band Perry"
     click_link "Delete Path"
     expect(page).to_not have_link "The Band Perry"
   end
@@ -86,7 +83,6 @@ feature "Path Comments" do
     fill_in "Title", with: "Jackson 5"
     fill_in "Description", with: "I Want You Back"
     click_button "Create Path"
-    click_link "Jackson 5"
     click_link "New Comment"
     expect(page).to have_content "New Comment"
     expect(page).to have_content "Body"
@@ -99,7 +95,6 @@ feature "Path Comments" do
     fill_in "Title", with: "Cups"
     fill_in "Description", with: "Anna Kendrick"
     click_button "Create Path"
-    click_link "Cups"
     click_link "New Comment"
     fill_in "Body", with: "No Diggity"
     click_button "Submit"
@@ -112,7 +107,6 @@ feature "Path Comments" do
     fill_in "Title", with: "ALL"
     fill_in "Description", with: "CAPS"
     click_button "Create Path"
-    click_link "ALL"
     click_link "New Comment"
     fill_in "Body", with: "MR. T"
     click_button "Submit"
@@ -128,7 +122,6 @@ feature "Path Comments" do
     fill_in "Title", with: "MR."
     fill_in "Description", with: "T"
     click_button "Create Path"
-    click_link "MR."
     click_link "New Comment"
     fill_in "Body", with: "Respect your mother"
     click_button "Submit"
