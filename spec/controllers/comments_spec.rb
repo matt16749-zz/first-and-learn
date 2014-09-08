@@ -17,4 +17,14 @@ RSpec.describe CommentsController, :type => :controller do
     end
   end
 
+  describe "GET #new" do
+    it 'responds successfully with an HTTP 200 status code' do
+      sign_in :user, user
+      get :index, path_id: path.id, id: comment.id
+      expect(response).to have_http_status(200)
+    end
+  end
+
+
+
 end
