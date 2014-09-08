@@ -31,6 +31,17 @@ RSpec.describe CommentsController, :type => :controller do
     end  
   end
 
+  describe "POST #create" do
+    it 'should redirect and provide status 302 upon path comment creation' do
+      sign_in :user, user
+      post :create, comment: FactoryGirl.attributes_for(:comment), path_id: path.id, commentable_type: "Path"
+      expect(response).to have_http_status(302)
+    end
 
-
+    it 'should redirect and provide status 302 upon asset comment creation' do
+      sign_in :user, user
+      post :create, comment: FactoryGirl.attributes_for(:comment), asset_id: asset.id, commentable_type: "Path"
+      expect(response).to have_http_status(302)
+    end
+  end
 end
