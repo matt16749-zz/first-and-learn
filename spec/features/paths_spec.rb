@@ -110,6 +110,7 @@ feature "Path Comments" do
     click_link "New Comment"
     fill_in "Body", with: "MR. T"
     click_button "Submit"
+    click_link "MR. T"
     expect(page).to have_content "MR. T"
     expect(page).to have_link "Back"
     expect(page).to have_link "Destroy"
@@ -124,6 +125,7 @@ feature "Path Comments" do
     click_link "New Comment"
     fill_in "Body", with: "Respect your mother"
     click_button "Submit"
+    click_link "Respect your mother"
     click_link "Destroy"
     expect(page).to_not have_link "MR."
   end
