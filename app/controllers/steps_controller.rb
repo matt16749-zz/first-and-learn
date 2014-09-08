@@ -36,8 +36,7 @@ class StepsController < ApplicationController
 
   def update
     step = Step.find(params[:id])
-    step.update_attributes(steps_params)
-    step.asset_id = params[:asset][:asset_id]
+    step.update(steps_params.merge(asset_id: params[:asset][:asset_id]))
 
     if step.save
       redirect_to path_path params[:path_id]

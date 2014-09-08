@@ -26,7 +26,7 @@ class PathsController < ApplicationController
 
   def update
     path = Path.find(params[:id])
-    path.update_attributes(path_params)
+    path.update(path_params)
     if path.save
       redirect_to paths_path
     else
