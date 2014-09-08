@@ -121,3 +121,14 @@
   height: 3em;
   width: 14em;
 }
+
+/****************PATHS SHOW*************/
+.path-container{
+  margin-left:10%;
+  margin-right:10%;
+}
+
+.path-header{
+  color:#659CEF;
+  border-bottom: 1px solid lightgray;
+}
