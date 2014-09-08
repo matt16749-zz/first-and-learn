@@ -1,7 +1,7 @@
 <div class="login">
   <h2 class="path-header">New Comment</h2>
 
-  <%= form_for [@commentable, Comment.new] do |f| %>
+  <%= form_for [@commentable, @comment] do |f| %>
     <p>
       <%= f.label :comment %><br />
       <%= f.text_area :body, :class => "description-field" %>

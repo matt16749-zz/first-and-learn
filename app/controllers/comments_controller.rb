@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   def show
