@@ -17,19 +17,35 @@
 .styled-button{
   background-color: #659CEF;
   border:none;
+  color: white;
 
 }
 .styled-button a{
   color: white;
 }
 
+/****************FORM STYLES*************/
+
+.input-label{
+  color:#659CEF;
+  font-size: 1.7em;
+}
+
+.description-field{
+  width: 30em;
+  height: 6em;
+}
+
+.title-field{
+  width: 30em;
+}
 
 
 
 /****************NAVBAR STYLES************/
 .navbar-item{
   margin-left: 2em;
-  height: 8em;
+  height: 10em;
 }
 
 .navbar-nav{
@@ -38,6 +54,7 @@
 }
 
 .navbar-brand{
+  margin-top: 2em;
   font-family: 'Roboto Slab', serif;
   font-size:1.3em;
 }
@@ -50,6 +67,7 @@
   position:absolute;
   left:0;
   margin-left:2em;
+  margin-right:2em;
   border: 1px solid lightgray;
   text-align: center;
   padding: 0.1em;
@@ -89,10 +107,28 @@
   display: block;
 }
 
-#new-path-button{
+.new-path-button{
   margin-left: 43%;
   margin-bottom: 2em;
   font-size: 1.3em;
   height: 3em;
   width: 14em;
+}
+
+.create-path-button{
+  margin-top: 1em;
+  font-size: 1.3em;
+  height: 3em;
+  width: 14em;
+}
+
+/****************PATHS SHOW*************/
+.path-container{
+  margin-left:10%;
+  margin-right:10%;
+}
+
+.path-header{
+  color:#659CEF;
+  border-bottom: 1px solid lightgray;
 }

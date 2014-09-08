@@ -6,13 +6,6 @@ RSpec.describe StepsController, :type => :controller do
   let(:asset) { create(:asset, user_id: user.id) }
   let(:step) { create(:step, path_id: path.id, asset_id: asset.id) }
 
-  before :each do
-    User.destroy_all
-    Asset.destroy_all
-    Step.destroy_all
-    Path.destroy_all
-  end
-
   describe "GET #show" do
     it 'responds successfully with an HTTP 200 status code' do
       get :show, path_id: path.id, id: step.id
