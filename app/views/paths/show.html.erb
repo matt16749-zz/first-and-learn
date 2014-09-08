@@ -16,6 +16,8 @@
 <p><%= step.body %></p>
 <% end %>
 
+<button><%= link_to "New Step", new_path_step_path(@path) %></button>
+
 <h3>Comments:</h3>
 <% @path.comments.each do |comment|%>
 <p><%= link_to comment.body, polymorphic_path([@path, comment]) %></p>

@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
+  include ApplicationHelper
   before_action :commentable
+  before_action :redirect_to_sign_up, only: [:new, :create, :destroy]
+  before_action :check_owner, only: [:destroy]
 
   def index
     @comments = @commentable.comments
@@ -10,12 +13,10 @@ class CommentsController < ApplicationController
   end
 
   def new
-    redirect_to user_session_path unless user_signed_in?
     @comment = Comment.new
   end
 
   def create
-    redirect_to user_session_path and return unless user_signed_in?
     comment = @commentable.comments.build(comment_params)
     comment.user_id = current_user.id
     if comment.save
@@ -27,11 +28,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    redirect_to user_session_path and return unless user_signed_in?
-    comment = Comment.find(params[:id])
-    if comment.destroy
-      redirect_to polymorphic_path(@commentable)
-    end
+    Comment.find(params[:id]).destroy
+    redirect_to polymorphic_path(@commentable)
   end
 
   private
@@ -50,5 +48,12 @@ class CommentsController < ApplicationController
       end
     end
     nil
+  end
+
+  def check_owner
+    unless Comment.find(params[:id]).user_id == current_user.id
+      flash[:alert] = "You cannot destroy a comment you do not own!"
+      redirect_to paths_path and return
+    end
   end
 end
