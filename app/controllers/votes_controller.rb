@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  include ApplicationHelper
   before_action :voteable
 
   def create
@@ -40,12 +41,5 @@ private
       end
     end
     nil
-  end
-
-  def vote_count(voteable_id, voteable_type)
-    class_name = voteable_type.classify.constantize
-    up_votes = class_name.find(voteable_id).votes.where(vote_state: true)
-    down_votes = class_name.find(voteable_id).votes.where(vote_state: false)
-    up_votes.count - down_votes.count
   end
 end
