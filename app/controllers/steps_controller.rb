@@ -11,8 +11,8 @@ class StepsController < ApplicationController
 
   def create
     step = Step.new(steps_params)
-    step.update_attributes(asset_id: params[:asset][:asset_id], path_id: params[:path_id])
-    step.get_position
+    step.update(asset_id: params[:asset][:asset_id], path_id: params[:path_id])
+    step.get_position_and_update!
 
     if step.save
       redirect_to path_path params[:path_id]
