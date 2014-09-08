@@ -2,8 +2,9 @@
 <h3><%= @path.description %></h3>
 
 <p>Created by: <%= @path.user.first_name %></p>
-<p id="path-vote-count">Votes: </p>
-<button id="path-vote" data-vote-state = true data-voteable-id = <%= @path.id %> data-voteable-type = "path" >Upvote!</button>
+<p>Votes: <span id="path-vote-count"></span></p>
+<button class="path-vote" data-vote-state=true data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Upvote!</button>
+<button class="path-vote" data-vote-state=false data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Downvote!</button>
 
 <% if current_user && current_user[:id] == @path.user_id %>
 <button><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>

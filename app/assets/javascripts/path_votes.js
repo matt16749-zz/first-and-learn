@@ -1,5 +1,5 @@
 $(document).on("page:change", function(){
-  var pathVote = $("#path-vote");
+  var pathVote = $(".path-vote");
   var pathVoteState = pathVote.data("vote-state");
   var pathVoteableId = pathVote.data("voteable-id");
   var pathVoteableType = pathVote.data("voteable-type");
