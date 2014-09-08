@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe StepsController, :type => :controller do
   let(:user) { create(:user) }
-  let(:asset) { create(:asset) }
-  let(:path) { create(:path) }
-  let(:step) { create(:step) }
+  let(:path) { create(:path, user_id: user.id) }
+  let(:asset) { create(:asset, user_id: user.id) }
+  let(:step) { create(:step, path_id: path.id, asset_id: asset.id) }
 
   before :each do
     User.destroy_all
