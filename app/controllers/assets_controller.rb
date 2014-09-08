@@ -9,6 +9,7 @@ class AssetsController < ApplicationController
 
   def show
     @asset = Asset.find(params[:id])
+    @votes_count = vote_count(params[:id], 'Asset')
   end
 
   def new
