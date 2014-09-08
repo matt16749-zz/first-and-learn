@@ -2,7 +2,7 @@
   <h1 class="path-header"><%= @asset.title %></h1>
   <p class="asset-description"><%= @asset.description %></p>
   <p class="asset-link"><%= link_to @asset.url, @asset.url %></p>
-  <% if current_user[:id] == @asset.user_id %>
+  <% if check_user_id(@asset) %>
     <button class="styled-button"><%= link_to "Edit", edit_asset_path(@asset) %></button>
     <button class="styled-button"><%= link_to "Delete", asset_path(@asset), :method => :delete %></button>
   <% end %>
