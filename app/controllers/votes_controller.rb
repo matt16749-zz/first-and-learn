@@ -1,8 +1,9 @@
 class VotesController < ApplicationController
+  include ApplicationHelper
   before_action :voteable
+  before_action :redirect_to_sign_up, only: [:new, :create, :update]
 
   def new
-    redirect_to user_session_path unless user_signed_in?
     vote = Vote.new
   end
 
@@ -19,7 +20,6 @@ class VotesController < ApplicationController
   end
 
   def update
-    redirect_to user_session_path unless user_signed_in?
   end
 
 private
