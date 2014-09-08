@@ -1,6 +1,6 @@
 $(document).on("page:change", function(){
   var voteOpts = {
-    pathVote: '.path-vote',
+    pathVote: '.vote',
   };
   var pathVote = new PathVoteController(voteOpts);
 });
@@ -24,7 +24,7 @@ PathVoteController.prototype = {
       data: e.target.dataset
     })
     .done(function(data){
-      $('#path-vote-count').html(data.vote_count);
+      $('#vote-count').html(data.vote_count);
     });
   }
 };
