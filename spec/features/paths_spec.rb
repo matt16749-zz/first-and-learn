@@ -85,7 +85,7 @@ feature "Path Comments" do
     click_button "Create Path"
     click_link "New Comment"
     expect(page).to have_content "New Comment"
-    expect(page).to have_content "Body"
+    expect(page).to have_content "Comment"
     expect(page).to have_button "Submit"
   end
 
@@ -96,7 +96,7 @@ feature "Path Comments" do
     fill_in "Description", with: "Anna Kendrick"
     click_button "Create Path"
     click_link "New Comment"
-    fill_in "Body", with: "No Diggity"
+    fill_in "comment[body]", with: "No Diggity"
     click_button "Submit"
     expect(page).to have_link "No Diggity"
   end
@@ -108,7 +108,7 @@ feature "Path Comments" do
     fill_in "Description", with: "CAPS"
     click_button "Create Path"
     click_link "New Comment"
-    fill_in "Body", with: "MR. T"
+    fill_in "comment[body]", with: "MR. T"
     click_button "Submit"
     click_link "MR. T"
     expect(page).to have_content "MR. T"
@@ -123,7 +123,7 @@ feature "Path Comments" do
     fill_in "Description", with: "T"
     click_button "Create Path"
     click_link "New Comment"
-    fill_in "Body", with: "Respect your mother"
+    fill_in "comment[body]", with: "Respect your mother"
     click_button "Submit"
     click_link "Respect your mother"
     click_link "Destroy"
