@@ -5,13 +5,13 @@ class Step < ActiveRecord::Base
   validates :path_id, :asset_id, :body, presence: true
 
   def get_position_and_update!
-    self.position = sorted_steps[-2].position + 1 if steps_greater_than_one?
+    self.position = sorted_steps.last.position + 1 unless path_steps_last_object_self?
   end
 
   private
 
-  def steps_greater_than_one?
-    self.path.steps.length > 1
+  def path_steps_last_object_self?
+    sorted_steps.last.eql?(self)
   end
 
   def sorted_steps
