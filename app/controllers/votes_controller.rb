@@ -1,7 +1,5 @@
 class VotesController < ApplicationController
-  include ApplicationHelper
   before_action :voteable
-  before_action :redirect_to_sign_up, only: [:create, :update]
 
   def create
     type = params[:voteableType]
