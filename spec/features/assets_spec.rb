@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 feature 'Assets' do
   before(:each) do
     user = create(:user)
@@ -11,6 +12,7 @@ feature 'Assets' do
       visit '/assets'
       expect(page).to_not have_button "Create Asset"
     end
+
     scenario 'Does let you create assets if logged in' do 
       visit '/assets'
       expect(page).to have_button "Create Asset"  
