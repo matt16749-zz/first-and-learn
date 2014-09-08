@@ -6,7 +6,7 @@ class StepsController < ApplicationController
   def new
     @step = Step.new
     @path = Path.find(params[:path_id])
-    @assets = Asset.where('user_id = ?', current_user.id)
+    @assets = Asset.where(user_id: current_user.id)
   end
 
   def create
@@ -19,7 +19,7 @@ class StepsController < ApplicationController
     else
       @step = Step.new
       @path = Path.find(params[:path_id])
-      @assets = Asset.where('user_id = ?', current_user.id)
+      @assets = Asset.where(user_id: current_user.id)
       render :new
     end
   end
@@ -31,7 +31,7 @@ class StepsController < ApplicationController
   def edit
     @step = Step.find(params[:id])
     @path = Path.find(params[:path_id])
-    @assets = Asset.where("user_id = ?", current_user.id)
+    @assets = Asset.where(user_id: current_user.id)
   end
 
   def update
