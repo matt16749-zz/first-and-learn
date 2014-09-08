@@ -1,5 +1,6 @@
-<% if @assets.nil? %>
-  <h1>There are currently no assets to display!</h1>
+<button><%= link_to "Create Asset", new_asset_path %></button>
+<% if @assets.empty? %>
+  <h3>There are currently no assets to display!</h3>
 <% else %>
   <% @assets.each do |asset| %>
     <div class="asset">
