@@ -5,8 +5,8 @@
   <p>Created by: <%= @path.user.first_name %></p>
   <p>Votes: <span id="vote-count"><%= @votes_count %></span></p>
   <% if user_signed_in? %>
-    <button class="vote" data-vote-state=true data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Upvote!</button>
-    <button class="vote" data-vote-state=false data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Downvote!</button>
+    <button class="vote styled-button" data-vote-state=true data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Upvote!</button>
+    <button class="vote styled-button" data-vote-state=false data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Downvote!</button>
   <% end %>
 
   <% if current_user && current_user[:id] == @path.user_id %>

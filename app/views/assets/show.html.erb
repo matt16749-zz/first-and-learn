@@ -8,8 +8,8 @@
   <% end %>
   <p>Votes: <span id="vote-count"><%= @votes_count %></span></p>
   <% if user_signed_in? %>
-    <button class="vote" data-vote-state=true data-voteable-id=<%= @asset.id %> data-voteable-type="Asset" >Upvote!</button>
-    <button class="vote" data-vote-state=false data-voteable-id=<%= @asset.id %> data-voteable-type="Asset" >Downvote!</button>
+    <button class="vote styled-button" data-vote-state=true data-voteable-id=<%= @asset.id %> data-voteable-type="Asset" >Upvote!</button>
+    <button class="vote styled-button" data-vote-state=false data-voteable-id=<%= @asset.id %> data-voteable-type="Asset" >Downvote!</button>
   <% end %>
   <h3>Comments:</h3>
   <% @asset.comments.each do |comment|%>
