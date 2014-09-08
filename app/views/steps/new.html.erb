@@ -1,7 +1,10 @@
-<%= form_for [@path, @step] do |f| %>
-  <%= f.label :body %><br />
-  <%= f.text_area :body %><br />
-  <%= label_tag 'Select Asset' %><br />
-  <%= select("asset", "asset_id", @assets.collect {|a| [ a.title, a.id ] }) %>
-  <%= f.submit %>
-<% end %>
+<div class="login">
+  <h2 class="path-header">New Step</h2>
+  <%= form_for [@path, @step] do |f| %>
+    <%= f.label :step %><br />
+    <%= f.text_area :body, :class => "description-field" %><br />
+    <%= label_tag 'Select Asset' %><br />
+    <%= select("asset", "asset_id", @assets.collect {|a| [ a.title, a.id ] } ) %>
+    <%= f.submit :class => "styled-button" %>
+  <% end %>
+</div>
