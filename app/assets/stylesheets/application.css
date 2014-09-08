@@ -18,10 +18,24 @@
   background-color: #659CEF;
   border:none;
   color: white;
+  margin-top: 1em;
+  margin-bottom: 1em;
 
 }
 .styled-button a{
   color: white;
+}
+
+.notice{
+  font-size: 1.5em;
+  margin-left: 20%;
+  margin-bottom: 2em;
+}
+
+.alert{
+  font-size: 1.5em;
+  margin-left: 20%;
+  margin-bottom: 2em;
 }
 
 /****************FORM STYLES*************/
@@ -40,6 +54,9 @@
   width: 30em;
 }
 
+.login{
+  margin-left: 10%;
+}
 
 
 /****************NAVBAR STYLES************/
