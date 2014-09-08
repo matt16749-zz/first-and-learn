@@ -13,7 +13,7 @@
   <button class="styled-button"><%= link_to "Back", paths_path %></button>
 
   <h3>Steps:</h3>
-  <% @path.steps.order(:position).each do |step|%>
+  <% @path.steps.order(:position).each do |step| %>
     <p><span><%= step.position %>: </span><%= step.body %></p>
     <p>Link: <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
     <p><%= step.asset.description %></p>
