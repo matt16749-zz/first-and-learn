@@ -9,7 +9,7 @@
     <button class="vote styled-button" data-vote-state=false data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Downvote!</button>
   <% end %>
 
-  <% if current_user && current_user[:id] == @path.user_id %>
+  <% if check_user_id(@path) %>
     <button class="styled-button"><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
     <button class="styled-button"><%= link_to "Edit Path", edit_path_path(@path) %></button>
   <% end %>
@@ -17,7 +17,7 @@
   <button class="styled-button"><%= link_to "Back", paths_path %></button>
 
   <h3>Steps:</h3>
-   <% if current_user && current_user[:id] == @path.user_id %>
+   <% if check_user_id(@path) %>
     <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
    <% end %>
   <% @path.steps.order(:position).each do |step| %>
@@ -27,7 +27,9 @@
   <% end %>
 
   <h3>Comments:</h3>
-  <button class="styled-button" id="new-comment-button"><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
+   <% if user_signed_in? %>
+    <button class="styled-button" id="new-comment-button"><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
+   <% end %>
   <% @path.comments.each do |comment|%>
     <p><%= link_to comment.body, polymorphic_path([@path, comment]) %></p>
   <% end %>
