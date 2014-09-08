@@ -9,4 +9,8 @@ module ApplicationHelper
     down_votes = class_name.find(voteable_id).votes.where(vote_state: false)
     up_votes.count - down_votes.count
   end
+
+  def check_user_id(feature)
+    current_user && current_user[:id] == feature.user_id
+  end
 end
