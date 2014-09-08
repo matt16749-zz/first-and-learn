@@ -3,9 +3,9 @@ class Path < ActiveRecord::Base
 
   belongs_to :user
   has_many :tags
-  has_many :steps
-  has_many :comments, as: :commentable
-  has_many :votes, as: :voteable
+  has_many :steps, :dependent => :destroy
+  has_many :comments, as: :commentable, :dependent => :destroy
+  has_many :votes, as: :voteable, :dependent => :destroy
 
   validates :title, :description, :user_id, presence: true
 end

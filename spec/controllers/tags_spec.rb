@@ -1,10 +1,6 @@
 require 'rails_helper'
 RSpec.describe TagsController, :type => :controller do
   let(:user) { create(:user) }
-  before :each do
-    User.destroy_all
-    Tag.destroy_all
-  end
 
   describe "GET #new" do
     it 'responds successfully with an HTTP 200 status code' do
