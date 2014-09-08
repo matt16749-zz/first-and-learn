@@ -1,6 +1,6 @@
 class AssetsController < ApplicationController
   include ApplicationHelper
-  before_action :redirect_to_sign_up, only: [:new, :create, :edit, :update, :destroy]
+  before_action :redirect_to_sign_up
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
