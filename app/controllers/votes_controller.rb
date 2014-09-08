@@ -6,19 +6,6 @@ class VotesController < ApplicationController
     vote = Vote.new
   end
 
-  # def create
-  #   redirect_to user_session_path and return unless user_signed_in?
-  #   vote = @voteable.votes.build(vote_params)
-  #   vote.user_id = current_user.id
-  #   vote.vote_state = params[:vote_state]
-  #   if vote.save
-  #     flash[:notice] = "Successfully created vote."
-  #     redirect_to polymorphic_path(@voteable)
-  #   else
-  #     render :action => 'new'
-  #   end
-  # end
-
   def create
     if current_user
       vote = Vote.new()
