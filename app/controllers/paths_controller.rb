@@ -12,8 +12,7 @@ class PathsController < ApplicationController
   end
 
   def create
-    path = Path.new(path_params)
-    path.user_id = current_user.id
+    path = Path.new(path_params.merge(user_id: current_user.id))
     if path.save
       redirect_to path_path(path)
     else
