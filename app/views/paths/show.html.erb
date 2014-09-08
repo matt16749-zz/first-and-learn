@@ -2,20 +2,22 @@
 <h3><%= @path.description %></h3>
 
 <p>Created by: <%= @path.user.first_name %></p>
+<p id="path-vote-count">Votes: </p>
+<button id="path-vote" data-vote-state = true data-voteable-id = <%= @path.id %> data-voteable-type = "path" >Upvote!</button>
 
 <% if current_user && current_user[:id] == @path.user_id %>
-  <button><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
+<button><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
 <% end %>
 
 <button><%= link_to "Back", paths_path %></button>
 
 <h3>Steps:</h3>
 <% @path.steps.each do |step|%>
-  <p><%= step.body %></p>
+<p><%= step.body %></p>
 <% end %>
 
 <h3>Comments:</h3>
 <% @path.comments.each do |comment|%>
-  <p><%= link_to comment.body, polymorphic_path([@path, comment]) %></p>
+<p><%= link_to comment.body, polymorphic_path([@path, comment]) %></p>
 <% end %>
 <button><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
