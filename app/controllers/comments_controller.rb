@@ -18,8 +18,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = @commentable.comments.build(comment_params)
-    comment.user_id = current_user.id
+    comment = @commentable.comments.build(comment_params.merge(user_id: current_user.id))
     if comment.save
       flash[:notice] = "Successfully created comment."
       redirect_to polymorphic_path(@commentable)
