@@ -1,9 +1,11 @@
-<h2>New Comment</h2>
+<div class="login">
+  <h2 class="path-header">New Comment</h2>
 
-<%= form_for [@commentable, Comment.new] do |f| %>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
+  <%= form_for [@commentable, Comment.new] do |f| %>
+    <p>
+      <%= f.label :comment %><br />
+      <%= f.text_area :body, :class => "description-field" %>
+    </p>
+    <p><%= f.submit "Submit", :class => "styled-button"%></p>
   <% end %>
+</div>

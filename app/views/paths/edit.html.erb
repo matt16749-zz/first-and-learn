@@ -1,13 +1,16 @@
-<%= form_for(@path) do |f| %>
- <ul>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-</ul>
- <ul>
-  <%= f.label :description %><br>
-  <%= f.text_field :description %>
-</ul>
- <ul>
-  <%= f.submit %><br>
-</ul>
-<% end %>
+<div class="login">
+  <h2 class="path-header">Edit Path</h2>
+  <%= form_for(@path) do |f| %>
+   <ul>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </ul>
+   <ul>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </ul>
+   <ul>
+    <%= f.submit :class => "styled-button"%>
+  </ul>
+  <% end %>
+</div>

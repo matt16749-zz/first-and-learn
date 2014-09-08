@@ -38,7 +38,7 @@ feature 'Sign in' do
   end
   scenario 'Shows the Sign In page' do
     visit '/users/sign_in'
-    expect(page).to have_content "Log in"
+    expect(page).to have_content "Sign in"
     expect(page).to have_content "Email"
     expect(page).to have_content "Password"
   end
@@ -48,7 +48,7 @@ feature 'Sign in' do
     visit '/users/sign_in'
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
-    click_button "Log in"
+    click_button "Sign in"
     expect(page).to have_content "Signed in successfully."
     expect(page).to have_content "First"
     expect(page).to have_content "and"
