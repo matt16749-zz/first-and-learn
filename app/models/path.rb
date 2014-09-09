@@ -8,4 +8,5 @@ class Path < ActiveRecord::Base
   has_many :votes, as: :voteable, :dependent => :destroy
 
   validates :title, :description, :user_id, presence: true
+
 end
