@@ -39,6 +39,6 @@ FirstAndLearn.PathsController.prototype = {
       type: 'POST',
       data: newAssetData
     })
-    .done(this.clearAssetFormAndAppendToSelectMenu);
+    .done(this.clearAssetFormAndAppendToSelectMenu.bind(this));
   }
 };
