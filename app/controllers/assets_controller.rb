@@ -12,11 +12,6 @@ class AssetsController < ApplicationController
     @votes_count = vote_count(params[:id], 'Asset')
   end
 
-  def new
-    @asset = Asset.new
-    render :_new
-  end
-
   def create
     asset = Asset.new(asset_params.merge(user_id: current_user.id))
     if asset.save
