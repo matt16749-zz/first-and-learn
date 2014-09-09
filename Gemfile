@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem 'unicorn'
 
 gem 'rails', '4.1.4'
 
 gem 'devise'
+
 gem 'omniauth'
+
 gem 'omniauth-twitter'
 
 gem 'pg'

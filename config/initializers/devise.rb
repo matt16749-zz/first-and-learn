@@ -24,5 +24,5 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
-  config.omniauth :twitter, "APP_ID", "APP_SECRET"
+  config.omniauth :twitter, "YeDoxIT9K52VUm7mesxCNvb7f", "dfKF41OZqL1iYq07aoew6f4nYAcHMTLpZl4mHfI10FuusJhftY"
 end
