@@ -16,6 +16,9 @@ FirstAndLearn.PathsController.prototype = {
     });
     $('#asset_asset_id').append('<option value="' + asset.id + '">' + asset.title + '</option>');
     $('[value="' + asset.id + '"]').prop('selected', true);
+    this.highlightAssetAndThenRemove();
+  },
+
   },
 
   showAssetsForm: function (e) {
