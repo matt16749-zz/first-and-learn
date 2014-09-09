@@ -16,7 +16,8 @@
 
   <button class="styled-button"><%= link_to "Back", paths_path %></button>
 
-  <h3>Steps:</h3>
+  <h3>Steps</h3>
+  <br>
    <% if check_user_id(@path) %>
     <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
    <% end %>
@@ -26,11 +27,13 @@
     <p class="asset-description"><%= step.asset.description %></p>
   <% end %>
 
-  <h3>Comments:</h3>
+  <h3>Comments</h3>
+  <hr>
    <% if user_signed_in? %>
     <button class="styled-button" id="new-comment-button"><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
    <% end %>
   <% @path.comments.each do |comment|%>
+    <p><span class="glyphicon glyphicon-comment"></span> <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %></p>
     <p><%= link_to comment.body, polymorphic_path([@path, comment]) %></p>
   <% end %>
 </div>
