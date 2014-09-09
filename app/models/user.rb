@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:twitter]
 end
