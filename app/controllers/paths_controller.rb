@@ -4,7 +4,11 @@ class PathsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
-     @paths = Path.search(params)
+    if params[:query].present?
+      @paths = Path.search(params)
+    else
+      @paths = Path.all
+    end
   end
 
   def new

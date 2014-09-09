@@ -14,7 +14,7 @@ class Path < ActiveRecord::Base
 
   def self.search(params)
     tire.search(load: true) do 
-      query { string params[:query] } if params[:query].present? 
+      query { string params[:query] }
     end
   end
 end
