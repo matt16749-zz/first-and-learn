@@ -33,7 +33,7 @@ path_ids.times do |path_index|
 end
 
 asset_ids.times do
-  type = ['book', 'video', 'tutorial', 'event', 'practice', 'other']
+  type = ['book', 'video', 'audio', 'tutorial', 'event', 'practice', 'other']
   Asset.create(
                     title: Faker::Lorem.sentence,
                     description: Faker::Lorem.paragraph,
