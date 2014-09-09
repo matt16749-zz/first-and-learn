@@ -166,6 +166,17 @@
   margin-bottom: 1.5em;
 }
 
+/****************PATHS CREATE*************/
+.create-assets-button{
+
+}
+
+#assets-partial{
+  display: none;
+}
+
+
+
 /****************COMMENT STYLES************/
 
 .comment{
