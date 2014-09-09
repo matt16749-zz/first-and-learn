@@ -19,6 +19,13 @@ FirstAndLearn.PathsController.prototype = {
     this.highlightAssetAndThenRemove();
   },
 
+  highlightAssetAndThenRemove: function () {
+    $('#asset_asset_id').css('border','3px solid green');
+    setTimeout(this.removeGreenBorder, 3000);
+  },
+
+  removeGreenBorder: function () {
+    $('#asset_asset_id').css('border', 'none');
   },
 
   showAssetsForm: function (e) {
