@@ -14,6 +14,7 @@ class AssetsController < ApplicationController
 
   def new
     @asset = Asset.new
+    render :_new
   end
 
   def create
