@@ -14,7 +14,7 @@
  *= require_self
  */
 
-.styled-button{
+ .styled-button{
   background-color: #659CEF;
   border:none;
   color: white;
@@ -22,6 +22,7 @@
   margin-bottom: 1em;
 
 }
+
 .styled-button a{
   color: white;
 }
@@ -80,7 +81,7 @@
 /****************LOGO STYLES*************/
 .logo{
   font-family: 'Roboto Slab', serif;
-/*  border: black 1px solid;*/
+  /*  border: black 1px solid;*/
   position:absolute;
   left:0;
   margin-left:2em;
@@ -194,4 +195,23 @@
 
 img{
   opacity:0.8;
+}
+
+/****************USER SHOW*************/
+
+.user-container {
+  width:960px;
+  margin:0 auto;
+}
+
+.user-paths {
+  float: left;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.user-assets {
+  float: right;
+  width: 250px;
+  margin: 0 auto;
 }
