@@ -2,13 +2,6 @@
   <h1>There are currently no paths to display!</h1>
 <% else %>
 
-  <%= form_tag paths_path, method: :get do  %>
-    <p>
-      <%= text_field_tag :query, params[:query] %>
-      <%= submit_tag "Search", name: nil %>      
-    </p>
-  <% end %> 
-
   <% if current_user %>
     <button class="styled-button pad-edge new-path-button"><%= link_to "Create New Path", new_path_path %></button>
   <% else %>
