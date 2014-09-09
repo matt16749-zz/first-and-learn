@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   before_action :redirect_to_sign_up, only: [:new, :create, :update, :edit, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
-
   def index
     @users = User.all
   end
@@ -38,5 +37,4 @@ private
   def user_params
     params.require(:path).permit(:description)
   end
-
 end
