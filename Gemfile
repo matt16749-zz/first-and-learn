@@ -5,6 +5,8 @@ gem 'unicorn'
 gem 'rails', '4.1.4'
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 gem 'pg'
 
