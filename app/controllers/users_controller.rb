@@ -2,10 +2,9 @@ class UsersController < ApplicationController
   # ==============================================================
   # ===== Do I need to include before actions for users??? =======
   # ==============================================================
-  include ApplicationHellper
+  include ApplicationHelper
   before_action :redirect_to_sign_up, only: [:new, :create, :update, :edit, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
-
 
 
   def index
@@ -31,11 +30,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = Path.find(params[:id])
+    @user = User.find(params[:id])
   end
 
-
 private
+
   def user_params
     params.require(:path).permit(:description)
   end

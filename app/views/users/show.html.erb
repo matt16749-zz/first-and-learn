@@ -1,5 +1,29 @@
 <div class="user-container">
-  <h1>Welcome <%= user  %></h1>
+  <h1 class="user-header">Welcome <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
+  <div>
+    <% if @user.paths.nil? %>
+      <h1>There are currently no paths to display!</h1>
+    <% else %>
+      <% if current_user %>
+        <button class="styled-button pad-edge new-path-button"><%= link_to "Create New Path", new_path_path %></button>
+      <% else %>
+        <p class="notice">You must sign in to create a path</p>
+      <% end %>
+      <% @user.paths.each do |path| %>
+        <ul class="path-list">
+          <div class="path-item">
+            <li class="path-title"><%= link_to path.title, path_path(path) %></li>
+            <li class="path-author">Created by: <%= path.user.first_name %></li>
+            <li class="path-description"><%= path.description %></li>
+            <% if current_user && current_user.id == path.user_id %>
+            <li><button class="styled-button"><%= link_to "Edit Path", edit_path_path(path) %></button></li>
+            <% end %>
+          </div>
+        </ul>
+      <% end %>
+    <% end %>
+
+  </div>
 
 
 </div>
