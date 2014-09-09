@@ -8,7 +8,7 @@ FirstAndLearn.PathsController.prototype = {
     $('[value="Save Asset"]').on('click', this.saveAsset.bind(this));
   },
 
-  addAssetToSelectMenu: function (asset) {
+  clearAssetFormAndAppendToSelectMenu: function (asset) {
     $('#assets-partial').fadeOut('fast', function () {
       $('#asset_title').val('');
       $('#asset_description').val('');
@@ -39,6 +39,6 @@ FirstAndLearn.PathsController.prototype = {
       type: 'POST',
       data: newAssetData
     })
-    .done(this.addAssetToSelectMenu);
+    .done(this.clearAssetFormAndAppendToSelectMenu);
   }
 };
