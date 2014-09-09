@@ -20,7 +20,7 @@ class AssetsController < ApplicationController
   def create
     asset = Asset.new(asset_params.merge(user_id: current_user.id))
     if asset.save
-      redirect_to assets_path
+      render json: asset
     else
       render :new
     end
