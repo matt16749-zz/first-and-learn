@@ -9,6 +9,11 @@ FirstAndLearn.PathsController.prototype = {
   },
 
   addAssetToSelectMenu: function (asset) {
+    $('#assets-partial').fadeOut('fast', function () {
+      $('#asset_title').val('');
+      $('#asset_description').val('');
+      $('#asset_url').val('');
+    });
     $('#asset_asset_id').append('<option value="' + asset.id + '">' + asset.title + '</option>');
     $('[value="' + asset.id + '"]').prop('selected', true);
   },
