@@ -5,6 +5,12 @@ FirstAndLearn.PathsController = function () {
 FirstAndLearn.PathsController.prototype = {
   addAssetListeners: function () {
     $('.create-assets-button').on('click', this.showAssetsForm.bind(this));
+    $('[value="Save Asset"]').on('click', this.saveAsset.bind(this));
+  },
+
+  addAssetToSelectMenu: function (asset) {
+    $('#asset_asset_id').append('<option value="' + asset.id + '">' + asset.title + '</option>');
+    $('[value="' + asset.id + '"]').prop('selected', true);
   },
 
   showAssetsForm: function (e) {
