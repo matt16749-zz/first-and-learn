@@ -42,3 +42,5 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
 end
+
+gem 'rails_12factor', group: :production
