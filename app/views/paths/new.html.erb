@@ -1,14 +1,24 @@
-<%= form_for(@path) do |f| %>
- <ul>
-  <%= f.label :title, :class=>"input-label" %><br>
-  <%= f.text_area :title, :class=>"title-field" %>
-</ul>
- <ul>
-  <%= f.label :description, :class=>"input-label" %><br>
-  <%= f.text_area :description, :class=>"description-field", :cols => 10, :rows => 10 %>
-</ul>
+<div id="create-new-path">
+  <%= form_for(@path) do |f| %>
+  <ul>
+    <%= f.label :title, :class=>"input-label" %><br>
+    <%= f.text_area :title, :class=>"title-field" %>
+  </ul>
+  <ul>
+    <%= f.label :description, :class=>"input-label" %><br>
+    <%= f.text_area :description, :class=>"description-field", :cols => 10, :rows => 10 %>
+  </ul>
 
- <ul>
-  <%= f.submit "Create Path", :class=>"styled-button create-path-button" %>
-</ul>
-<% end %>
+  <input type="hidden" name="path[tags]" id="tags-for-path">
+
+  <ul>
+    <%= f.submit "Create Path", :class=>"styled-button create-path-button" %>
+  </ul>
+  <% end %>
+
+  <button class="styled-button create-tags-button">Add Tags</button>
+  <div id="tags-partial">
+    <%= render 'tags/new', layout: false, locals: {asset: @new_asset} %>
+  </div>
+
+</div>
