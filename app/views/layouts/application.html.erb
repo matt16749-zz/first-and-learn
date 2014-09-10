@@ -20,15 +20,16 @@
         <span class="icon-bar"></span>
       </button>
     </div>
-        <h1 class="logo">First<br><span id="logo-span">and</span><br>Learn</h1>
+        <h1 class="logo"><a href="/">First<br><span id="logo-span">and</span><br>Learn</a></h1>
       <ul class="nav navbar-nav">
-        <li class="navbar-item"><a class="navbar-brand" href="/">Take Me Home</a></li>
-        <li class="navbar-item"><a class="navbar-brand" href="/paths">Explore Other Paths</a></li>
         <% if current_user %>
+          <li class="navbar-item"><a class="navbar-brand" href="/users/<%= current_user.id %>">Take Me Home</a></li>
+          <li class="navbar-item"><a class="navbar-brand" href="/paths">Explore Other Paths</a></li>
           <li class="navbar-item"><%= link_to "Forge a New Path", new_path_path, :method => "get", :class=>"navbar-brand" %></li>
           <li class="navbar-item"><%= link_to "Change a Path", paths_path, :method => "get", :class=>"navbar-brand" %></li>
           <li class="navbar-item"><%= link_to "Sign Out", destroy_user_session_path, :method => "delete", :class=>"navbar-brand" %></li>
         <%else%>
+          <li class="navbar-item"><a class="navbar-brand" href="/paths">Explore Other Paths</a></li>
           <li class="navbar-item"><%= link_to "Sign In", user_session_path, :method => "get", :class=>"navbar-brand" %></li>
           <li class="navbar-item"><%= link_to "Sign Up", new_user_registration_path, :method => "get", :class=>"navbar-brand" %></li>
         <% end %>
