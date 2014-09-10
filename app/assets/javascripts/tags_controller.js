@@ -8,4 +8,9 @@ FirstAndLearn.TagsController.prototype = {
     $('#add-tags').on('click', this.getTagsFromInputAndCreate.bind(this));
   },
 
+
+  showTagCreationInput: function (e) {
+    e.preventDefault();
+    $('#tags-partial').fadeIn();
+  }
 };
