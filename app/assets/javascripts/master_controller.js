@@ -2,12 +2,12 @@ FirstAndLearn = {};
 
 $(document).on('page:change', function () {
   var controllers = {
-    pathsController: new FirstAndLearn.PathsController()
+    assetsController: new FirstAndLearn.AssetsController()
   };
 
   new FirstAndLearn.MasterController(controllers);
 });
 
 FirstAndLearn.MasterController = function (controllers) {
-  this.pathsController = controllers.pathsController;
+  this.assetsController = controllers.AssetsController;
 };

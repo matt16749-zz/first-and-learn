@@ -1,8 +1,8 @@
-FirstAndLearn.PathsController = function () {
+FirstAndLearn.AssetsController = function () {
   this.addAssetListeners();
 };
 
-FirstAndLearn.PathsController.prototype = {
+FirstAndLearn.AssetsController.prototype = {
   addAssetListeners: function () {
     $('.create-assets-button').on('click', this.showAssetsForm.bind(this));
     $('[value="Save Asset"]').on('click', this.saveAsset.bind(this));
