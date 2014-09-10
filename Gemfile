@@ -14,6 +14,8 @@ gem 'omniauth-twitter'
 
 gem 'pg'
 
+gem 'activerecord-session_store', github: "rails/activerecord-session_store"
+
 gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
