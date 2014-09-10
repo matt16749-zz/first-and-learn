@@ -170,7 +170,7 @@
 
 }
 
-#assets-partial{
+#assets-partial, #tags-partial {
   display: none;
 }
 
