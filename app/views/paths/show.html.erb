@@ -25,6 +25,10 @@
     <p><span class="step-body"><%= step.position %>: <%= step.body %></span></p>
     <p class="asset-link"><span class="<%= step.asset.asset_type %>" title="Type: <%= step.asset.asset_type %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
     <p class="asset-description"><%= step.asset.description %></p>
+    <% if check_user_id(step.path) %>
+      <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
+      <button class="styled-button"><%= link_to "Edit Step", polymorphic_path([:edit, @path, step]) %></button>
+    <% end %>
   <% end %>
 
   <h3>Comments</h3>
