@@ -24,7 +24,8 @@
   <div class="steps-list">
   <% @path.steps.order(:position).each do |step| %>
   <div class="step-div">
-    <p><span class="step-body"><%= step.position %>: <%= step.body %></span></p>
+    <p><span class="step-body"><span class="step-position"><%= step.position %></span><br>
+      <%= step.body %></span></p>
     <p class="asset-link"><span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
     <p class="asset-description"><%= step.asset.description %></p>
     <% if check_user_id(step.path) %>
