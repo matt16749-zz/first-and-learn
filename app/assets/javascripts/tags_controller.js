@@ -4,7 +4,7 @@ FirstAndLearn.TagsController = function () {
 
 FirstAndLearn.TagsController.prototype = {
   addTagsListeners: function () {
-    $('.create-tags-button').on('click', this.showTagCreationInput.bind(this));
+    $('.create-tags-button').on('click', this.showAndHideTagCreationInput.bind(this));
     $('#add-tags').on('click', this.getTagsFromInputAndCreate.bind(this));
   },
 
@@ -26,8 +26,13 @@ FirstAndLearn.TagsController.prototype = {
     .done(this.addTagsToPathFormAndHideAddTagsForm);
   },
 
-  showTagCreationInput: function (e) {
+  showAndHideTagCreationInput: function (e) {
     e.preventDefault();
-    $('#tags-partial').fadeIn();
+    var tagsPartial = $('#tags-partial');
+    if (tagsPartial.hasClass('shown'))
+      tagsPartial.fadeOut();
+    else
+      tagsPartial.fadeIn();
+    tagsPartial.toggleClass('shown');
   }
 };
