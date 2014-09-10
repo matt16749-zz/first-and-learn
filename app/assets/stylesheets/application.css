@@ -59,7 +59,6 @@
   margin-left: 10%;
 }
 
-
 /****************NAVBAR STYLES************/
 .navbar-item{
   margin-left: 2em;
@@ -95,7 +94,6 @@
 #logo-span{
   font-size: 18px;
 }
-
 
 /****************PATHS INDEX*************/
 
@@ -165,12 +163,6 @@
   font-size: 1.2em;
   width: 30em;
   margin-bottom: 1.5em;
-}
-
-/****************Asset STYLES************/
-
-.blue{
-  color: #659CEF;
 }
 
 /****************COMMENT STYLES************/
