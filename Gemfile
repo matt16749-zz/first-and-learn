@@ -1,12 +1,20 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem 'unicorn'
 
 gem 'rails', '4.1.4'
 
 gem 'devise'
 
+gem 'omniauth'
+
+gem 'omniauth-linkedin'
+
 gem 'pg'
+
+gem 'activerecord-session_store', github: "rails/activerecord-session_store"
 
 gem 'uglifier', '>= 1.3.0'
 
