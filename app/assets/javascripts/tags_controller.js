@@ -18,10 +18,18 @@ FirstAndLearn.TagsController.prototype = {
 
   getTagsFromInputAndCreate: function (e) {
     e.preventDefault();
+    var addingTagsToThisClass = window.location.href.split('/').slice(-2, -1)[0].slice(0, -1);
+    var addingTagsToThisObjectNum = window.location.href.split('/').slice(-1)[0];
+
+    if (addingTagsToThisClass === 'path')
+      tagsToCreate = { tag: { name: $('[name="tag[name]"]').val() }, path_id: parseInt(addingTagsToThisObjectNum, 10) };
+    else if (addingTagsToThisClass === 'asset')
+      tagsToCreate = { tag: { name: $('[name="tag[name]"]').val() }, asset_id: parseInt(addingTagsToThisObjectNum, 10) };
+
     $.ajax({
       type: 'POST',
       url: '/tags',
-      data: { tag: { name: $('[name="tag[name]"]').val() } }
+      data: tagsToCreate
     })
     .done(this.addTagsToPathFormAndHideAddTagsForm);
   },
