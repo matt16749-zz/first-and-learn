@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   resources :paths do
     resources :comments
     resources :votes
-    resources :steps
+    resources :steps, except: [:show]
   end
 
-  resources :assets do
+  resources :assets, except: [:new] do
     resources :comments
     resources :votes
   end

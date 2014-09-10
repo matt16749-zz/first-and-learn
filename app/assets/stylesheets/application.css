@@ -57,7 +57,6 @@
   margin-left: 10%;
 }
 
-
 /****************NAVBAR STYLES************/
 .navbar{
   margin-bottom: 0px !important;
@@ -100,16 +99,7 @@
   float: left;
   z-index: -1;
   height: 150px;
-
 }
-
-/*#logo-div{
-  height: 200px;
-  width:100px;
-  background-image: url("logo-img-sm" src="../../assets/signpost.png")
-}*/
-
-
 /****************PATHS INDEX*************/
 
 .path-list{
@@ -179,6 +169,17 @@
   width: 30em;
   margin-bottom: 1.5em;
 }
+
+/****************PATHS CREATE*************/
+.create-assets-button{
+
+}
+
+#assets-partial{
+  display: none;
+}
+
+
 
 /****************COMMENT STYLES************/
 
