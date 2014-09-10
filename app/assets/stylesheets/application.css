@@ -29,13 +29,11 @@
 .notice{
   font-size: 1.5em;
   margin-left: 20%;
-  margin-bottom: 2em;
 }
 
 .alert{
   font-size: 1.5em;
   margin-left: 20%;
-  margin-bottom: 2em;
 }
 
 /****************FORM STYLES*************/
@@ -61,13 +59,13 @@
 
 /****************NAVBAR STYLES************/
 .navbar-item{
-  margin-left: 2em;
+  margin-left: 3em;
   height: 10em;
 }
 
 .navbar-nav{
   margin-top: 2em;
-  margin-left: 3em;
+  /*margin-left: 4em;*/
 }
 
 .navbar-brand{
@@ -80,20 +78,36 @@
 /****************LOGO STYLES*************/
 .logo{
   font-family: 'Roboto Slab', serif;
-/*  border: black 1px solid;*/
-  position:absolute;
-  left:0;
-  margin-left:2em;
-  margin-right:2em;
+  clear: both;
+  position: absolute;
+  top: 120px;
+  left: 70px;
+  z-index: 100;
+  margin-left: 1em;
   border: 1px solid lightgray;
   text-align: center;
-  padding: 0.1em;
+  padding: 0.2em;
   font-size: 30px;
+  /*color: #659CEF;*/
+  color: black;
 }
 
 #logo-span{
   font-size: 18px;
 }
+
+.logo-img-sm{
+  float: left;
+  z-index: -1;
+  height: 200px;
+
+}
+
+/*#logo-div{
+  height: 200px;
+  width:100px;
+  background-image: url("logo-img-sm" src="../../assets/signpost.png")
+}*/
 
 
 /****************PATHS INDEX*************/
