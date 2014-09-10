@@ -16,7 +16,7 @@
             <li class="path-author">Created by: <%= path.user.first_name %></li>
             <li class="path-description"><%= path.description %></li>
             <% if current_user && current_user.id == path.user_id %>
-            <li><button class="styled-button"><%= link_to "Edit Path", edit_path_path(path) %></button></li>
+            <li><button class="styled-button"><%= link_to "Edit", path_path(path) %></button></li>
             <% end %>
           </div>
         </ul>
