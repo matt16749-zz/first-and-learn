@@ -36,6 +36,11 @@
     <% end %>
   <% end %>
 
+  <h3>Tags</h3>
+  <% if check_user_id(@path) %>
+    <%= render 'tags/new', layout: false %>
+  <% end %>
+
   <h3>Comments</h3>
   <hr>
    <% if user_signed_in? %>
