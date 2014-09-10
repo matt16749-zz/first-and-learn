@@ -8,15 +8,13 @@ FirstAndLearn.PathsController.prototype = {
     $('[value="Save Asset"]').on('click', this.saveAsset.bind(this));
   },
 
-  clearAssetFormAndAppendToSelectMenu: function (asset) {
+  clearAssetForm: function (asset) {
     $('#assets-partial').fadeOut('fast', function () {
       $('#asset_title').val('');
       $('#asset_description').val('');
       $('#asset_url').val('');
-    });
-    $('#asset_asset_id').append('<option value="' + asset.id + '">' + asset.title + '</option>');
-    $('[value="' + asset.id + '"]').prop('selected', true);
-    this.highlightAssetAndThenRemove();
+      this.whereToAppendNewAsset(asset);
+    }.bind(this));
   },
 
   highlightAssetAndThenRemove: function () {
@@ -49,6 +47,8 @@ FirstAndLearn.PathsController.prototype = {
       type: 'POST',
       data: newAssetData
     })
-    .done(this.clearAssetFormAndAppendToSelectMenu.bind(this));
+    .done(this.clearAssetForm.bind(this));
+  },
+
   }
 };
