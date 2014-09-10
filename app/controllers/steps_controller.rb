@@ -5,6 +5,7 @@ class StepsController < ApplicationController
 
   def new
     @step = Step.new
+    @new_asset = Asset.new
     @path = Path.find(params[:path_id])
     @assets = Asset.where(user_id: current_user.id)
   end

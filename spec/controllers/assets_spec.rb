@@ -30,24 +30,11 @@ RSpec.describe AssetsController, :type => :controller do
     end
   end
 
-  describe 'GET #new' do
+  describe "POST #create" do
     it 'responds successfully with an HTTP 200 status code' do
       sign_in :user, user
-      get :new
-      expect(response).to have_http_status(200)
-    end
-
-    it "redirects to login page if user is not logged in do" do
-      get :new
-      expect(response).to redirect_to '/users/sign_in'
-    end
-  end
-
-  describe "POST #create" do
-    it 'responds successfully with an HTTP 302 status code' do
-      sign_in :user, user
       post :create, asset: FactoryGirl.attributes_for(:asset)
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(200)
     end
   end
 
