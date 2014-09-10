@@ -39,7 +39,7 @@
   <% @path.comments.each do |comment|%>
     <p><span class="glyphicon glyphicon-comment"></span> <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %>
     <% if check_user_id(comment) %>
-      <%= comment.user.last_name %> <%= link_to "Edit", polymorphic_path([:edit, @path, comment]) %></p>
+      <%= comment.user.last_name %> <%= link_to "Edit", polymorphic_path([:edit, @path, comment]) %> <%= link_to "Delete", polymorphic_path([@path, comment]), method: :delete %></p>
     <% end %>
     <p><%= comment.body %></p>
     <br>
