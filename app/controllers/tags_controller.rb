@@ -3,9 +3,19 @@ class TagsController < ApplicationController
   before_action :redirect_to_sign_up, only: [:create]
 
   def create
-    all_tags = tags_params[:name].split(/,\s*/)
+    all_tags = tags_params[:name].downcase.split(/,\s*/)
     tags_to_create = tags_that_need_to_be_created(all_tags)
-    tags_to_create.each { |tag| Tag.create(name: tag) }
+
+    if params[:path_id]
+      path = Path.find(params[:path_id])
+      tags_to_create.each { |tag| path.tags << Tag.create(name: tag) }
+    elsif params[:asset_id]
+      asset = Path.find(params[:asset_id])
+      tags_to_create.each { |tag| asset.tags << Tag.create(name: tag) }
+    else
+      tags_to_create.each { |tag| Tag.create(name: tag) }
+    end
+
     render json: { tags: all_tags }
   end
 
