@@ -11,7 +11,7 @@
 
   <% if check_user_id(@path) %>
     <button class="styled-button"><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
-    <button class="styled-button"><%= link_to "Edit Path", edit_path_path(@path) %></button>
+    <button class="styled-button"><%= link_to "Edit Path details", edit_path_path(@path) %></button>
   <% end %>
 
   <button class="styled-button"><%= link_to "Back", paths_path %></button>
@@ -37,7 +37,10 @@
     <button class="styled-button" id="new-comment-button"><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
    <% end %>
   <% @path.comments.each do |comment|%>
-    <p><span class="glyphicon glyphicon-comment"></span> <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %> <%= comment.user.last_name %> <%= link_to "Edit", polymorphic_path([@path, comment]) %></p>
+    <p><span class="glyphicon glyphicon-comment"></span> <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %>
+    <% if check_user_id(comment) %>
+      <%= comment.user.last_name %> <%= link_to "Edit", polymorphic_path([:edit, @path, comment]) %></p>
+    <% end %>
     <p><%= comment.body %></p>
     <br>
   <% end %>
