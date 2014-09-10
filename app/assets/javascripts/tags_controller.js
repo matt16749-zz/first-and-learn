@@ -8,6 +8,15 @@ FirstAndLearn.TagsController.prototype = {
     $('#add-tags').on('click', this.getTagsFromInputAndCreate.bind(this));
   },
 
+  getTagsFromInputAndCreate: function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/tags',
+      data: { tag: { name: $('[name="tag[name]"]').val() } }
+    })
+    .done(this.addTagsToPathFormAndHideAddTagsForm);
+  },
 
   showTagCreationInput: function (e) {
     e.preventDefault();
