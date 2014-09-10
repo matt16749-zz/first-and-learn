@@ -66,7 +66,12 @@ FirstAndLearn.AssetsController.prototype = {
       type: 'POST',
       data: newAssetData
     })
-    .done(this.clearAssetForm.bind(this));
+    .done(this.clearAssetForm.bind(this))
+    .fail(function (failData) {
+      console.log('Asset creation failed: ');
+      console.log(failData);
+      console.log(Object.keys(failData));
+    });
   },
 
   whereToAppendNewAsset: function (asset) {
