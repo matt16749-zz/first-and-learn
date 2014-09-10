@@ -157,7 +157,7 @@
 .step-body{
   font-size: 1.5em;
   font-weight: bold;
-  border-bottom: 1px solid #D4D3D3;
+  /*border-bottom: 1px solid #D4D3D3;*/
 }
 
 .asset-link{
@@ -166,9 +166,23 @@
 
 .asset-description{
   font-size: 1.2em;
-  width: 30em;
-  margin-bottom: 1.5em;
+/*  width: 30em;*/
+  /*margin-bottom: 1.5em;*/
 }
+
+.step-div{
+  width: 30%;
+  height: 400px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  float: left;
+
+}
+
+
 
 /****************PATHS CREATE*************/
 .create-assets-button{
@@ -186,6 +200,7 @@
 .comment{
   margin-left:20%;
   margin-right:20%;
+  clear: all;
 }
 
 /****************LANDING PAGE STYLES*************/
