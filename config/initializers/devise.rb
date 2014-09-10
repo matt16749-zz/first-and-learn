@@ -24,5 +24,5 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
-  config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_SECRET_KEY']
+  config.omniauth :linkedin, ENV['LINKEDIN_API_KEY'], ENV['LINKEDIN_SECRET_KEY']
 end
