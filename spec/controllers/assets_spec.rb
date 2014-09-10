@@ -31,10 +31,10 @@ RSpec.describe AssetsController, :type => :controller do
   end
 
   describe "POST #create" do
-    it 'responds successfully with an HTTP 302 status code' do
+    it 'responds successfully with an HTTP 200 status code' do
       sign_in :user, user
       post :create, asset: FactoryGirl.attributes_for(:asset)
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(200)
     end
   end
 
