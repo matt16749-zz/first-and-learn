@@ -19,6 +19,12 @@ FirstAndLearn.PathsController.prototype = {
     $('#asset-list div:first').fadeIn('slow');
   },
 
+  appendNewAssetToSelectMenu: function (asset) {
+    $('#asset_asset_id').append('<option value="' + asset.id + '">' + asset.title + '</option>');
+    $('[value="' + asset.id + '"]').prop('selected', true);
+    this.highlightAssetAndThenRemove();
+  },
+
   clearAssetForm: function (asset) {
     $('#assets-partial').fadeOut('fast', function () {
       $('#asset_title').val('');
