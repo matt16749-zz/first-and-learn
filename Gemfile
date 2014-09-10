@@ -12,6 +12,8 @@ gem 'omniauth'
 
 gem 'omniauth-twitter'
 
+gem 'omniauth-linkedin'
+
 gem 'pg'
 
 gem 'activerecord-session_store', github: "rails/activerecord-session_store"
