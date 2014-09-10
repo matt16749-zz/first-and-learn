@@ -15,7 +15,13 @@ class PathsController < ApplicationController
     tags_to_add = remove_tags_from_params![:tags].split(/,\s*/)
     path = Path.new(path_params.merge(user_id: current_user.id))
     if path.save
-      tags_to_add.each { |tag| path.tags << Tag.find_by_name(tag) }
+      tags_to_add.each do |tag|
+        path.tags <<  if Tag.find_by_name(tag).nil?
+                        Tag.create(name: tag)
+                      else
+                        Tag.find_by_name(tag)
+                      end
+      end
       redirect_to path_path(path)
     else
       render :new
