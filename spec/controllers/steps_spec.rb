@@ -6,13 +6,6 @@ RSpec.describe StepsController, :type => :controller do
   let(:asset) { create(:asset, user_id: user.id) }
   let(:step) { create(:step, path_id: path.id, asset_id: asset.id) }
 
-  describe "GET #show" do
-    it 'responds successfully with an HTTP 200 status code' do
-      get :show, path_id: path.id, id: step.id
-      expect(response).to have_http_status(200)
-    end
-  end
-
   describe "GET #edit" do
     it 'responds successfully with an HTTP 200 status code' do
       sign_in :user, user
