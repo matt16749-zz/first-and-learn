@@ -15,6 +15,6 @@ class TagsController < ApplicationController
   end
 
   def tags_that_need_to_be_created(tags_to_test)
-    tags_to_test.select { |tag| Tag.find_by_name(tag) == nil }
+    tags_to_test.select { |tag| Tag.find_by_name(tag).nil? }
   end
 end
