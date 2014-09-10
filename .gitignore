@@ -17,3 +17,5 @@
 
 # ignore database schema png.
 FL_schema.png
+
+/.env
