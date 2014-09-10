@@ -30,7 +30,7 @@ FirstAndLearn.AssetsController.prototype = {
       $('#asset_title').val('');
       $('#asset_description').val('');
       $('#asset_url').val('');
-      $('#asset_asset_type').prop('selectedIndex', 0)
+      $('#asset_category').prop('selectedIndex', 0)
       this.whereToAppendNewAsset(asset);
     }.bind(this));
   },
@@ -57,7 +57,7 @@ FirstAndLearn.AssetsController.prototype = {
         title: e.target.form.asset_title.value,
         description: e.target.form.asset_description.value,
         url: e.target.form.asset_url.value,
-        asset_type: e.target.form.asset_asset_type.value
+        category: e.target.form.asset_category.value
       }
     };
 

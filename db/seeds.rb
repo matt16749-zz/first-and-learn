@@ -33,12 +33,12 @@ path_ids.times do |path_index|
 end
 
 asset_ids.times do
-  type = ['book', 'video', 'audio', 'tutorial', 'event', 'practice', 'other']
+  category = ['book', 'video', 'audio', 'tutorial', 'event', 'practice', 'other']
   Asset.create(
                     title: Faker::Lorem.sentence,
                     description: Faker::Lorem.paragraph,
                     url: Faker::Internet.url,
-                    asset_type: type.sample,
+                    category: category.sample,
                     user_id: rand(1..user_ids)
     )
 end
