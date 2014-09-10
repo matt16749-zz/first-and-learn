@@ -15,10 +15,8 @@ class AssetsController < ApplicationController
   def create
     asset = Asset.new(asset_params.merge(user_id: current_user.id))
     if asset.save
-      p "ASSET CREATION SUCCEEDED #{asset.inspect}"
       render json: asset
     else
-      p "ASSET CREATION FAILED #{asset.inspect}"
       render :new
     end
   end
