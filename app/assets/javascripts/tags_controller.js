@@ -8,6 +8,14 @@ FirstAndLearn.TagsController.prototype = {
     $('#add-tags').on('click', this.getTagsFromInputAndCreate.bind(this));
   },
 
+  addTagsToPathFormAndHideAddTagsForm: function (tagsToAdd) {
+    var tagsToAddString = tagsToAdd.tags.join(', ');
+    $('#tags-for-path').val(tagsToAddString);
+    $('#tags-partial').fadeOut(function () {
+      $('[name="tag[name]"]').val('');
+    });
+  },
+
   getTagsFromInputAndCreate: function (e) {
     e.preventDefault();
     $.ajax({
