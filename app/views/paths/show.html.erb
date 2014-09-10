@@ -1,5 +1,10 @@
 <div class="path-container">
   <h1 class="path-header"><%= @path.title %></h1>
+  <div id="path-tags">
+    <% @tags.each do |tag| %>
+      <span class="tag"><%= tag.name %></span>
+    <% end %>
+  </div>
   <h3><%= @path.description %></h3>
 
   <p>Created by: <%= @path.user.first_name %></p>

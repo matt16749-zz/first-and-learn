@@ -45,6 +45,7 @@ class PathsController < ApplicationController
   def show
     @path = Path.find(params[:id])
     @votes_count = vote_count(params[:id], 'Path')
+    @tags = @path.tags
   end
 
   def destroy
