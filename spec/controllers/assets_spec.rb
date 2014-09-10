@@ -43,11 +43,19 @@ RSpec.describe AssetsController, :type => :controller do
     end
   end
 
+
   describe "POST #create" do
     it 'responds successfully with an HTTP 302 status code' do
       sign_in :user, user
       post :create, asset: FactoryGirl.attributes_for(:asset)
       expect(response).to have_http_status(302)
+    end
+
+    it 'increases asset count in db by 1' do
+      sign_in :user, user
+      expect{
+        post :create, asset: FactoryGirl.attributes_for(:asset)
+      }.to change{Asset.count}
     end
   end
 
