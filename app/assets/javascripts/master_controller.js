@@ -2,7 +2,8 @@ FirstAndLearn = {};
 
 $(document).on('page:change', function () {
   var controllers = {
-    assetsController: new FirstAndLearn.AssetsController()
+    assetsController: new FirstAndLearn.AssetsController();
+    tagsController: new FirstAndLearn.TagsController();
   };
 
   new FirstAndLearn.MasterController(controllers);
@@ -10,4 +11,5 @@ $(document).on('page:change', function () {
 
 FirstAndLearn.MasterController = function (controllers) {
   this.assetsController = controllers.AssetsController;
+  this.tagsController = controllers.tagsController;
 };
