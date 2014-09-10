@@ -23,7 +23,7 @@
    <% end %>
   <% @path.steps.order(:position).each do |step| %>
     <p><span class="step-body"><%= step.position %>: <%= step.body %></span></p>
-    <p class="asset-link"><span class="<%= step.asset.asset_type %>" title="Type: <%= step.asset.asset_type %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
+    <p class="asset-link"><span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
     <p class="asset-description"><%= step.asset.description %></p>
   <% end %>
 
