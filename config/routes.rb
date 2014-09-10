@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :steps
   end
 
-  resources :assets do
+  resources :assets, except: [:new] do
     resources :comments
     resources :votes
   end
