@@ -30,6 +30,7 @@ FirstAndLearn.AssetsController.prototype = {
       $('#asset_title').val('');
       $('#asset_description').val('');
       $('#asset_url').val('');
+      $('#asset_asset_type').prop('selectedIndex', 0)
       this.whereToAppendNewAsset(asset);
     }.bind(this));
   },
