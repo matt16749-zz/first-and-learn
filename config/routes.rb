@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
 
+  resources :users, except: [:new, :create, :destroy]
+
   resources :paths do
     resources :comments
     resources :votes
