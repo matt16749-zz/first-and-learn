@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root to: "home#index"
+
+  resources :users, except: [:new, :create, :destroy]
 
   resources :paths do
     resources :comments

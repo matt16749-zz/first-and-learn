@@ -1,3 +1,7 @@
+require 'dotenv'
+Dotenv.load
+
+
 Rails.application.configure do
   # Devise configuration.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
@@ -38,3 +42,5 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+
+
