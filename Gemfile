@@ -10,8 +10,6 @@ gem 'devise'
 
 gem 'omniauth'
 
-gem 'omniauth-twitter'
-
 gem 'omniauth-linkedin'
 
 gem 'pg'
