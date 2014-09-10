@@ -8,6 +8,8 @@ gem 'rails', '4.1.4'
 
 gem 'devise'
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 gem 'omniauth'
 
 gem 'omniauth-linkedin'
