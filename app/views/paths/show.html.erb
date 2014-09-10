@@ -22,8 +22,8 @@
     <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
    <% end %>
   <% @path.steps.order(:position).each do |step| %>
-    <p><span class="step-body"><%= step.position %>.  <%= step.body %></span ></p>
-    <p><a class="asset-link" href="<%= step.asset.url %>" target="_blank"><%= step.asset.title %></a></p>
+    <p><span class="step-body"><%= step.position %>: <%= step.body %></span></p>
+    <p class="asset-link"><span class="<%= step.asset.asset_type %>" title="Type: <%= step.asset.asset_type %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
     <p class="asset-description"><%= step.asset.description %></p>
     <% if check_user_id(step.path) %>
       <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
@@ -37,7 +37,8 @@
     <button class="styled-button" id="new-comment-button"><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
    <% end %>
   <% @path.comments.each do |comment|%>
-    <p><%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %></p>
-    <p><%= link_to comment.body, polymorphic_path([@path, comment]) %></p>
+    <p><span class="glyphicon glyphicon-comment"></span> <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %> <%= comment.user.last_name %> <%= link_to "Edit", polymorphic_path([@path, comment]) %></p>
+    <p><%= comment.body %></p>
+    <br>
   <% end %>
 </div>

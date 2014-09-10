@@ -1,15 +1,20 @@
 <div class="login">
-  <button class="styled-button"><%= link_to "Create Asset", new_asset_path %></button>
+  <button class="styled-button create-assets-button">Create Asset</button>
+  <div id="assets-partial">
+      <%= render 'assets/new', layout: false, locals: {asset: @new_asset} %>
+  </div>
   <% if @assets.empty? %>
     <h3>There are currently no assets to display!</h3>
   <% else %>
-    <% @assets.each do |asset| %>
-      <div class="asset">
-        <h3><%= asset.title %></h3>
-          <button class="styled-button"><%= link_to "Details", asset_path(asset) %></button>
-          <button class="styled-button"><a href="<%= asset.url %>">View Asset</a></button>
-        <p>Description: <%= asset.description %></p>
-      </div>
-    <% end %>
+    <div id="asset-list">
+      <% @assets.each do |asset| %>
+        <div class="asset">
+          <h3><%= asset.title %></h3>
+            <button class="styled-button"><%= link_to "Details", asset_path(asset) %></button>
+            <button class="styled-button"><a href="<%= asset.url %>">View Asset</a></button>
+          <p>Description: <%= asset.description %></p>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
