@@ -50,5 +50,10 @@ FirstAndLearn.PathsController.prototype = {
     .done(this.clearAssetForm.bind(this));
   },
 
+  whereToAppendNewAsset: function (asset) {
+    if ($('#asset_asset_id').length > 0)
+      this.appendNewAssetToSelectMenu(asset);
+    else
+      this.appendNewAsset(asset);
   }
 };
