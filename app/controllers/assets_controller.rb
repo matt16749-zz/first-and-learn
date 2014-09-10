@@ -43,7 +43,7 @@ class AssetsController < ApplicationController
 
   private
   def asset_params
-    params.require(:asset).permit(:title, :description, :url)
+    params.require(:asset).permit(:title, :description, :url, :asset_type)
   end
 
   def check_owner

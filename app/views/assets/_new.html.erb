@@ -7,6 +7,8 @@
     <div><%= f.text_area :description %></div>
     <%= f.label :url %><br />
     <div><%= f.url_field :url %></div>
+    <%= f.label :asset_type %>
+    <div><%= f.select :asset_type, options_for_select([['Book', 'book'], ['Video', 'video'], ['Audio', 'audio'], ['Tutorial', 'tutorial'], ['Practice', 'practice'], ['Event', 'event'], ['Other', 'other']]) %></div>
     <%= f.submit :class => "styled-button" %>
   <% end %>
 </div>

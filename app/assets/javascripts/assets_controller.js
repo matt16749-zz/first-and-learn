@@ -55,7 +55,8 @@ FirstAndLearn.AssetsController.prototype = {
       asset: {
         title: e.target.form.asset_title.value,
         description: e.target.form.asset_description.value,
-        url: e.target.form.asset_url.value
+        url: e.target.form.asset_url.value,
+        asset_type: e.target.form.asset_asset_type.value
       }
     };
 
