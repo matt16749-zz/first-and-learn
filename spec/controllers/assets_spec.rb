@@ -4,6 +4,11 @@ RSpec.describe AssetsController, :type => :controller do
   let(:user) { create(:user) }
   let(:asset) { create(:asset, user_id: user.id) }
 
+  before :each do
+    User.destroy_all
+    Asset.destroy_all
+  end
+
   describe "GET #index" do
     it 'responds successfully with an HTTP 200 status code' do
       sign_in :user, user
@@ -57,6 +62,14 @@ RSpec.describe AssetsController, :type => :controller do
         post :create, asset: FactoryGirl.attributes_for(:asset)
       }.to change{Asset.count}
     end
+
+    it 'should not add an asset to the database without a title' do
+      sign_in :user, user
+      expect{ 
+        post :create, asset: { description: 'description', user_id: user.id, title: '', url: 'http://someurl.com' }
+      }.to_not change{Asset.count}
+    end
+
   end
 
   describe "GET #edit" do
