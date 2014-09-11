@@ -148,6 +148,7 @@ html, body{
 /****************PATHS SHOW*************/
 .show-path-description{
   width: 80%;
+  clear: both;
 }
 
 #creator{
