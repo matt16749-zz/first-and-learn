@@ -10,11 +10,9 @@
     <% end %>
     <% if check_user_id(@path) %>
       <button class="styled-button"><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
-      <button class="styled-button"><%= link_to "Edit Path", edit_path_path(@path) %></button>
+      <button class="styled-button"><%= link_to "Edit Path Details", edit_path_path(@path) %></button>
     <% end %>
   </p>
-
-
 
    <% if check_user_id(@path) %>
     <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
@@ -35,6 +33,7 @@
   <% end %>
 </div>
 
+
   <div class="row col-md-10">
     <h3>Comments</h3>
     <hr>
@@ -43,7 +42,7 @@
      <% end %>
     <% @path.comments.each do |comment|%>
       <p><span class="glyphicon glyphicon-comment"></span>
-           <%= link_to "Edit", polymorphic_path([@path, comment]) %></p>
+           <%= link_to "Edit", polymorphic_path([:edit, @path, comment]) %> <%= link_to "Delete", polymorphic_path([@path, comment]), method: :delete %></p>
       <p class="path-comment"><%= comment.body %></p>
         <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %> <%= comment.user.last_name %><br>
       <br>
