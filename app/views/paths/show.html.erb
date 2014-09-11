@@ -1,5 +1,10 @@
 <div class="path-container">
   <h1 class="path-header"><%= @path.title %></h1>
+  <div id="path-tags">
+    <% @tags.each do |tag| %>
+      <span class="tag"><%= tag.name %></span>
+    <% end %>
+  </div>
   <h3><%= @path.description %></h3>
 
   <p>
@@ -19,19 +24,24 @@
    <% end %>
   <br>
   <div class="steps-list">
-  <% @path.steps.order(:position).each do |step| %>
-  <div class="step-div">
-    <p><span class="step-body"><span class="step-position"><%= step.position %></span><br>
-      <%= step.body %></span></p>
-    <p class="asset-link"><span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
-    <p class="asset-description"><%= step.asset.description %></p>
-    <% if check_user_id(step.path) %>
-      <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
-      <button class="styled-button"><%= link_to "Edit Step", polymorphic_path([:edit, @path, step]) %></button>
+    <% @path.steps.order(:position).each do |step| %>
+      <div class="step-div">
+        <p><span class="step-body"><span class="step-position"><%= step.position %></span><br>
+          <%= step.body %></span></p>
+        <p class="asset-link"><span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
+        <p class="asset-description"><%= step.asset.description %></p>
+        <% if check_user_id(step.path) %>
+          <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
+          <button class="styled-button"><%= link_to "Edit Step", polymorphic_path([:edit, @path, step]) %></button>
+        <% end %>
+      </div>
     <% end %>
-</div>
+  </div>
+
+  <h3>Tags</h3>
+  <% if check_user_id(@path) %>
+    <%= render 'tags/new', layout: false %>
   <% end %>
-</div>
 
 
   <div class="row col-md-10">
