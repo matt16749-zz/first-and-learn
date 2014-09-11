@@ -9,6 +9,7 @@ FirstAndLearn.TagsController.prototype = {
   },
 
   addTagsToPathTagList: function (tagsToAdd) {
+    this.hideAndClearTagForm();
     var tagsToAddArray = tagsToAdd.tags;
     var tagsShowing = this.getTagsFromPage();
     var newTagsLength = tagsToAddArray.length;
@@ -47,6 +48,13 @@ FirstAndLearn.TagsController.prototype = {
       pageTags.push($(this).context.innerHTML);
     });
     return pageTags;
+  },
+
+  hideAndClearTagForm: function () {
+    $('#tags-partial').fadeOut(function () {
+      $('[name="tag[name]"]').val('');
+      $('#tags-partial').toggleClass('shown');
+    });
   },
 
   showAndHideTagCreationInput: function (e) {
