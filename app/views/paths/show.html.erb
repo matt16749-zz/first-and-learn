@@ -1,7 +1,6 @@
 <div class="path-container">
   <h1 class="path-header"><%= @path.title %></h1>
   <h3><%= @path.description %></h3>
-
   <p>
     <span id="creator">Created by: <%= @path.user.first_name %></span> <span id="vote-count">Votes: <%= @votes_count %></span>
     <% if user_signed_in? %>

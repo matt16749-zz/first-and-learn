@@ -1,6 +1,5 @@
-<div class="user-container">
-  <h1 class="user-header">Welcome <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
-  <div class="user-paths">
+<div class="user-container col-md-12">
+  <h1 class="path-header">Welcome <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
     <% if @user.paths.nil? %>
       <h1>There are currently no paths to display!</h1>
     <% else %>
@@ -9,23 +8,27 @@
       <% else %>
         <p class="notice">You must sign in to create a path</p>
       <% end %>
-      <% @user.paths.each do |path| %>
-        <ul class="path-list user-path-list">
-          <div class="path-item">
-            <li class="path-title"><%= link_to path.title, path_path(path) %></li>
-            <li class="path-author">Created by: <%= path.user.first_name %></li>
-            <li class="path-description"><%= path.description %></li>
-            <% if current_user && current_user.id == path.user_id %>
-            <li><button class="styled-button"><%= link_to "Edit Path", edit_path_path(path) %></button></li>
-            <% end %>
-          </div>
-        </ul>
-      <% end %>
+      <h2 class="path-header">Your Paths</h2>
+      <div class="user-path-container col-md-9">
+        <% @user.paths.each do |path| %>
+          <ul class="col-md-4">
+            <div class="path-item">
+              <li class="path-title"><%= link_to path.title, path_path(path) %></li>
+              <li class="path-author">Created by: <%= path.user.first_name %></li>
+              <li class="path-description"><%= path.description %></li>
+              <% if current_user && current_user.id == path.user_id %>
+              <li><button class="styled-button"><%= link_to "Edit Path", edit_path_path(path) %></button></li>
+              <% end %>
+            </div>
+          </ul>
+        <% end %>
     <% end %>
   </div>
 
+
   <div class="user-assets">
- <div id="assets-partial">
+    <h2 class="path-header">Your Links</h2>
+    <div id="assets-partial">
       <%= render 'assets/new', layout: false, locals: {asset: @new_asset} %>
     </div>
     <button class="styled-button create-assets-button">Create Asset</button>
@@ -36,9 +39,9 @@
         <% @user.assets.each do |asset| %>
           <div class="asset user-asset-list">
             <h3><%= asset.title %></h3>
+            <p>Description: <%= asset.description %></p>
               <button class="styled-button"><%= link_to "Details", asset_path(asset) %></button>
               <button class="styled-button"><a href="<%= asset.url %>">View Asset</a></button>
-            <p>Description: <%= asset.description %></p>
           </div>
         <% end %>
       </div>
