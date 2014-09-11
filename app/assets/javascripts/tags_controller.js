@@ -57,5 +57,16 @@ FirstAndLearn.TagsController.prototype = {
     else
       tagsPartial.fadeIn();
     tagsPartial.toggleClass('shown');
+  },
+
+  sortAndCreateHTML: function (tags) {
+    tags.sort();
+    var tagsHTML = '';
+    var tagsLength = tags.length;
+
+    for (var j = 0; j < tagsLength; j++)
+      tagsHTML += '<span class="tag">' + tags[j] + '</span>';
+
+    return tagsHTML;
   }
 };
