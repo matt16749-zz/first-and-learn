@@ -1,11 +1,11 @@
 <div class="path-container">
   <h1 class="path-header"><%= @path.title %></h1>
-  <div id="path-tags">
+  <div id="path-tags" class:"col-md-10">
     <% @tags.each do |tag| %>
-      <span class="tag"><%= tag.name %></span>
+      <p class="tag"><%= tag.name %></p>
     <% end %>
   </div>
-  <h3 class="show-path-description"><%= @path.description %></h3>
+  <h3 id="big-path-description"class="show-path-description"><%= @path.description %></h3>
   <p>
     <span id="creator">Created by: <%= @path.user.first_name %></span> <span id="vote-count">Votes: <%= @votes_count %></span>
     <% if user_signed_in? %>
@@ -22,6 +22,9 @@
     <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
    <% end %>
   <br>
+    <% if check_user_id(@path) %>
+      <%= render 'tags/new', layout: false %>
+    <% end %>
   <div class="steps-list">
     <% @path.steps.order(:position).each do |step| %>
       <div class="step-div">
@@ -36,12 +39,6 @@
       </div>
     <% end %>
   </div>
-
-  <h3>Tags</h3>
-  <% if check_user_id(@path) %>
-    <%= render 'tags/new', layout: false %>
-  <% end %>
-
 
   <div class="row col-md-10">
     <h3>Comments</h3>
