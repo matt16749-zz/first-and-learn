@@ -50,16 +50,6 @@ feature 'Creating New Paths' do
     expect(page).to have_content "Give Me One Reason"
   end
 
-  scenario "Allows Users to click back from path link" do
-    visit '/paths'
-    click_link "Create New Path"
-    fill_in "Title", with: "Stevie Wonder"
-    fill_in "Description", with: "Isn't She Lovely"
-    click_button "Create Path"
-    click_link "Back"
-    expect(page).to have_link "Stevie Wonder"
-  end
-
   scenario "Allows Users to delete path" do
     visit '/paths'
     click_link "Create New Path"
@@ -126,7 +116,7 @@ feature "Path Comments" do
     fill_in "comment[body]", with: "Respect your mother"
     click_button "Submit"
     click_link "Edit"
-    click_link "Destroy"
+    click_link "Delete"
     expect(page).to_not have_link "MR."
   end
 end
