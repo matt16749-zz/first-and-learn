@@ -5,14 +5,14 @@ FirstAndLearn.AssetsController = function () {
 FirstAndLearn.AssetsController.prototype = {
   addAssetListeners: function () {
     $('.create-assets-button').on('click', this.showAssetsForm.bind(this));
-    $('[value="Save Asset"]').on('click', this.saveAsset.bind(this));
+    $('[value="Save Link"]').on('click', this.saveAsset.bind(this));
   },
 
   appendNewAsset: function (asset) {
     var newAssetHTML =  '<div style="display: none" class="asset">' +
                         '<h3>' + asset.title +'</h3>' +
                         '<button class="styled-button"><a href="/assets/' + asset.id + '">Details</a></button>' + " " +
-                        '<button class="styled-button"><a href="' + asset.url + '">View Asset</a></button>' +
+                        '<button class="styled-button"><a href="' + asset.url + '">View Link</a></button>' +
                         '<p>Description: ' + asset.description  + '</p>' +
                         '</div>';
     $('#asset-list').prepend(newAssetHTML);

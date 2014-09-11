@@ -91,21 +91,6 @@ feature "Path Comments" do
     expect(page).to have_content "No Diggity"
   end
 
-  scenario "View Individual Comment" do
-    visit '/paths'
-    click_link "Create New Path"
-    fill_in "Title", with: "ALL"
-    fill_in "Description", with: "CAPS"
-    click_button "Create Path"
-    click_link "New Comment"
-    fill_in "comment[body]", with: "MR. T"
-    click_button "Submit"
-    click_link "Edit"
-    expect(page).to have_content "MR. T"
-    expect(page).to have_link "Back"
-    expect(page).to have_link "Destroy"
-  end
-
   scenario "Destroy Individual Comment" do
     visit '/paths'
     click_link "Create New Path"
@@ -115,8 +100,7 @@ feature "Path Comments" do
     click_link "New Comment"
     fill_in "comment[body]", with: "Respect your mother"
     click_button "Submit"
-    click_link "Edit"
-    click_link "Destroy"
+    click_link "Delete"
     expect(page).to_not have_link "MR."
   end
 end
