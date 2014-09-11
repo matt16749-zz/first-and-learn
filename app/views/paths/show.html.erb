@@ -21,9 +21,6 @@
   </p>
 
   <br>
-    <% if check_user_id(@path) %>
-      <%= render 'tags/new', layout: false %>
-    <% end %>
   <div class="steps-list">
     <% @path.steps.order(:position).each do |step| %>
       <div class="step-div">
