@@ -5,7 +5,7 @@ FirstAndLearn.AssetsController = function () {
 FirstAndLearn.AssetsController.prototype = {
   addAssetListeners: function () {
     $('.create-assets-button').on('click', this.showAssetsForm.bind(this));
-    $('[value="Save Asset"]').on('click', this.saveAsset.bind(this));
+    $('[value="Save Link"]').on('click', this.saveAsset.bind(this));
   },
 
   appendNewAsset: function (asset) {
