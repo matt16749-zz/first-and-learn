@@ -21,9 +21,6 @@
   </p>
 
   <br>
-    <% if check_user_id(@path) %>
-      <%= render 'tags/new', layout: false %>
-    <% end %>
   <div class="steps-list">
     <% @path.steps.order(:position).each do |step| %>
       <div class="step-div">
@@ -36,7 +33,7 @@
           </span>
         </p>
         <p class="asset-link">
-          <a href="<%= step.asset.url %>"><%= step.asset.title %>
+          <a href="<%= step.asset.url %>" target="_blank"><%= step.asset.title %>
             <br>
             <img class="url-preview" src="http://api.pagepeeker.com/v2/thumbs.php?size=m&url=<%= step.asset.url %>" alt="<%= step.asset.url %>" />
           </a>
