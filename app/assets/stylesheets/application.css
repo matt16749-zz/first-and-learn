@@ -109,7 +109,16 @@ html, body{
   height: 150px;
 }
 /****************PATHS INDEX*************/
+#pick-a-path{
+  color:#659CEF;
+  border-bottom: 1px solid lightgray;
+  text-align: center;
+}
 
+#path-index-button{
+  margin-left: 45%;
+
+}
 .path-list{
   list-style: none;
 }

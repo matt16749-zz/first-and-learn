@@ -1,11 +1,13 @@
-<%= form_for @asset, class: 'edit-asset' do |f| %>
-  <%= f.label :title %><br />
-  <div><%= f.text_field :title %></div>
-  <%= f.label :description %><br />
-  <div><%= f.text_area :description %></div>
-  <%= f.label :url %><br />
-  <div><%= f.url_field :url %></div>
-  <%= f.submit %>
-<% end %>
-
+<div class="login">
+  <h2 class="path-header">Edit Link</h2>
+  <%= form_for @asset, class: 'edit-asset' do |f| %>
+    <%= f.label :title %><br />
+    <div><%= f.text_field :title %></div>
+    <%= f.label :description %><br />
+    <div><%= f.text_area :description, :class =>"description-field" %></div>
+    <%= f.label :url %><br />
+    <div><%= f.url_field :url, :class =>"description-field" %></div>
+    <%= f.submit :class=>"styled-button" %>
+  <% end %>
+</div>
 

@@ -2,8 +2,9 @@
   <h1>There are currently no paths to display!</h1>
 <% else %>
 
+  <h2 id="pick-a-path">Choose a Path to Explore</h2>
   <% if current_user %>
-    <button class="styled-button pad-edge new-path-button"><%= link_to "Create New Path", new_path_path %></button>
+    <button class="styled-button new-path-button" id="path-index-button"><%= link_to "Create New Path", new_path_path %></button>
   <% else %>
       <p class="notice">You must sign in to create a path</p>
   <% end %>
