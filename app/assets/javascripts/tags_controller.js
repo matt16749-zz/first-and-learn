@@ -38,7 +38,15 @@ FirstAndLearn.TagsController.prototype = {
       url: '/tags',
       data: tagsToCreate
     })
-    .done(this.addTagsToPathFormAndHideAddTagsForm);
+    .done(this.addTagsToPathTagList.bind(this));
+  },
+
+  getTagsFromPage: function () {
+    var pageTags = [];
+    $('#path-tags').children().each( function () {
+      pageTags.push($(this).context.innerHTML);
+    });
+    return pageTags;
   },
 
   showAndHideTagCreationInput: function (e) {
