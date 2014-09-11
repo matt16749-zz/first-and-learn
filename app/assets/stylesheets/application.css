@@ -54,7 +54,7 @@
 }
 
 .login{
-  margin-left: 10%;
+  margin-left: 30%;
 }
 
 /****************NAVBAR STYLES************/
@@ -264,10 +264,6 @@
 }
 
 /****************USER SHOW*************/
-
-/*.user-container {
-  margin:0 auto;
-}*/
 
 .path-list{
   float: left;
