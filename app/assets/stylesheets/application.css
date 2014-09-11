@@ -77,8 +77,6 @@
 .logo{
   font-family: 'Roboto Slab', serif;
   float:left;
-  /*clear: both;*/
-  /*position: absolute;*/
   margin-top: 2.5em;
   left: 85px;
   z-index: 100;
@@ -87,7 +85,6 @@
   text-align: center;
   padding: 0.2em;
   font-size: 30px;
-  /*color: #659CEF;*/
   color: black;
 }
 
@@ -108,7 +105,7 @@
 
 .path-title a{
   color:#659CEF;
-  font-size: 1.7em;
+  font-size: 2em;
   border-bottom: 1px solid lightgray;
 }
 
@@ -118,7 +115,7 @@
   font-size: 1.3em;
 }
 
-.path-item{
+.path-index-item{
   border:1px lightgray solid;
   border-radius: 5px;
   padding: 0.5em;
@@ -126,14 +123,14 @@
   margin-left: auto;
   margin-right: auto;
   display: block;
+  list-style: none;
 }
 
 .new-path-button{
-  margin-left: 43%;
-  margin-bottom: 2em;
+  margin-left: 2em;
   font-size: 1.3em;
-  height: 3em;
-  width: 14em;
+  height: 2em;
+  width: 9em;
 }
 
 .create-path-button{
@@ -269,20 +266,49 @@
 
 /****************USER SHOW*************/
 
-.user-container {
-  width:960px;
+/*.user-container {
   margin:0 auto;
+}*/
+
+.path-list{
+  float: left;
 }
 
-.user-paths {
-  float: left;
-  width: 500px;
-  margin: 0 auto;
+.user-path-container{
+  list-style: none;
+  margin-left: 2em;
+}
+
+.path-item {
+  list-style: none;
+  height: 250px;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 3.8em;
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(206,206,206,0.65) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(206,206,206,0.65)));
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(206,206,206,0.65) 100%);
+  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(206,206,206,0.65) 100%);
+  background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(206,206,206,0.65) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(206,206,206,0.65) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6cecece',GradientType=0 );
+}
+
+.path-item:hover{
+  background: -moz-linear-gradient(top,  rgba(125,185,232,0) 0%, rgba(182,196,211,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,185,232,0)), color-stop(100%,rgba(182,196,211,1)));
+  background: -webkit-linear-gradient(top,  rgba(125,185,232,0) 0%,rgba(182,196,211,1) 100%);
+  background: -o-linear-gradient(top,  rgba(125,185,232,0) 0%,rgba(182,196,211,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(125,185,232,0) 0%,rgba(182,196,211,1) 100%);
+  background: linear-gradient(to bottom,  rgba(125,185,232,0) 0%,rgba(182,196,211,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#b6c4d3',GradientType=0 );
 }
 
 .user-assets {
   float: right;
-  width: 250px;
+  width: 25em;
   margin: 0 auto;
 }
 

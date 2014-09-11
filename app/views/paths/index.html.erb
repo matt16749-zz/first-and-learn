@@ -8,8 +8,8 @@
       <p class="notice">You must sign in to create a path</p>
   <% end %>
   <% @paths.each do |path| %>
-      <ul class="path-list">
-        <div class="path-item">
+      <ul class="path-index-list">
+        <div class="path-index-item">
           <li class="path-title"><%= link_to path.title, path_path(path) %></li>
           <li class="path-author">Created by: <%= path.user.first_name %></li>
           <li class="path-description"><%= path.description %></li>
