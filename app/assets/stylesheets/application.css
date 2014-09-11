@@ -281,3 +281,19 @@
   width: 250px;
   margin: 0 auto;
 }
+
+/****************TAG SHOW*************/
+
+.tag {
+  background-color: #56D9C9;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  float: left;
+  font-weight: 400;
+  letter-spacing: .2px;
+  line-height: 0.8;
+  margin-right: 8px;
+  padding: 4px 8px;
+  top: 0;
+}
