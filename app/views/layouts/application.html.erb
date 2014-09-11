@@ -12,17 +12,15 @@
 <body>
 <div class="navbar navbar-default">
   <img class="logo-img-sm" src="/assets/signpost.png"/>
-  <h1 class="logo">First <span id="logo-span">and</span> Learn</h1>
+  <h1 class="logo"><a href="/">First <span id="logo-span">and</span> Learn</a></h1>
   <div class="container" id="navbar-container">
       <ul class="nav navbar-nav">
+        <li class="navbar-item"><a class="navbar-brand" href="/paths">Explore Other Paths</a></li>
         <% if current_user %>
-          <li class="navbar-item"><a class="navbar-brand" href="/users/<%= current_user.id %>">Take Me Home</a></li>
-          <li class="navbar-item"><a class="navbar-brand" href="/paths">Explore Other Paths</a></li>
           <li class="navbar-item"><%= link_to "Forge a New Path", new_path_path, :method => "get", :class=>"navbar-brand" %></li>
-          <li class="navbar-item"><%= link_to "Change a Path", paths_path, :method => "get", :class=>"navbar-brand" %></li>
+          <li class="navbar-item"><a class="navbar-brand" href="/users/<%= current_user.id %>">Profile</a></li>
           <li class="navbar-item"><%= link_to "Sign Out", destroy_user_session_path, :method => "delete", :class=>"navbar-brand" %></li>
         <%else%>
-          <li class="navbar-item"><a class="navbar-brand" href="/paths">Explore Other Paths</a></li>
           <li class="navbar-item"><%= link_to "Sign In", user_session_path, :method => "get", :class=>"navbar-brand" %></li>
           <li class="navbar-item"><%= link_to "Sign Up", new_user_registration_path, :method => "get", :class=>"navbar-brand" %></li>
         <% end %>
