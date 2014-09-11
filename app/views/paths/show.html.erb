@@ -16,6 +16,7 @@
       <button class="styled-button"><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
       <button class="styled-button"><%= link_to "Edit Path Details", edit_path_path(@path) %></button>
       <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
+      <%= render 'tags/new', layout: false %>
     <% end %>
   </p>
 
@@ -45,12 +46,6 @@
       </div>
     <% end %>
   </div>
-
-  <h3>Tags</h3>
-  <% if check_user_id(@path) %>
-    <%= render 'tags/new', layout: false %>
-  <% end %>
-
 
   <div class="row col-md-10">
     <h3>Comments</h3>
