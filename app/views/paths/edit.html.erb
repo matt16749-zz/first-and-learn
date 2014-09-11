@@ -3,11 +3,11 @@
   <%= form_for(@path) do |f| %>
    <ul>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class =>"title-field"  %>
   </ul>
    <ul>
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, :class =>"description-field"  %>
   </ul>
    <ul>
     <%= f.submit :class => "styled-button"%>

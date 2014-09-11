@@ -52,10 +52,16 @@ html, body{
 .description-field{
   width: 30em;
   height: 6em;
+  border: 1px solid lightgray;
+  border-radius: 5px;
 }
 
 .title-field{
   width: 30em;
+  height: 3em;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+
 }
 
 .login{
@@ -120,6 +126,9 @@ html, body{
   font-size: 1.3em;
 }
 
+.path-index-list{
+  margin-top: 1em;
+}
 .path-index-item{
   border:1px lightgray solid;
   border-radius: 5px;
@@ -145,6 +154,11 @@ html, body{
   width: 14em;
 }
 
+#create-new-path{
+  margin-top: 2em;
+  margin-left: 30%;
+}
+
 /****************PATHS SHOW*************/
 .show-path-description{
   width: 80%;
@@ -168,6 +182,10 @@ html, body{
 .path-header{
   color:#659CEF;
   border-bottom: 1px solid lightgray;
+}
+
+#big-path-description{
+  margin-top: 2em;
 }
 
 .path-body {
@@ -201,7 +219,7 @@ html, body{
 
 .step-div{
   width: 30%;
-  /*height: 400px;*/
+  height: 500px;
   border: 1px solid lightgray;
   border-radius: 5px;
   display: inline-block;
@@ -230,14 +248,22 @@ html, body{
 
 
 /****************PATHS CREATE*************/
-.create-assets-button{
-
-}
 
 #assets-partial, #tags-partial {
   display: none;
 }
 
+#add-tags{
+  background-color: #659CEF;
+  border:none;
+  color: white;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#path.tags{
+
+}
 
 
 /****************COMMENT STYLES************/

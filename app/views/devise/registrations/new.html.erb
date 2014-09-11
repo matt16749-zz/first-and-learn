@@ -5,19 +5,19 @@
     <%= devise_error_messages! %>
 
     <div><%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %></div>
+    <%= f.text_field :first_name, autofocus: true, :class =>"title-field" %></div>
 
     <div><%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %></div>
+    <%= f.text_field :last_name, autofocus: true, :class =>"title-field" %></div>
 
     <div><%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %></div>
+    <%= f.email_field :email, autofocus: true, :class =>"title-field" %></div>
 
     <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %></div>
+      <%= f.password_field :password, autocomplete: "off", :class =>"title-field" %></div>
 
     <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "title-field" %></div>
 
     <div><%= f.submit "Sign up", :class => "styled-button"%></div>
   <% end %>
