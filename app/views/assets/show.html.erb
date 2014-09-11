@@ -12,8 +12,12 @@
     <button class="vote styled-button" data-vote-state=false data-voteable-id=<%= @asset.id %> data-voteable-type="Asset" >Downvote!</button>
   <% end %>
   <h3>Comments:</h3>
+    <% if user_signed_in? %>
+    <button class="styled-button" id="new-comment-button"><%= link_to "New Comment", polymorphic_path([@asset, Comment]) %></button>
+   <% end %>
   <% @asset.comments.each do |comment|%>
-    <%= link_to comment.body, polymorphic_path([@asset, comment]) %><br>
+    <p><%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %></p>
+    <p><%= link_to comment.body, polymorphic_path([@asset, comment]) %><br>
   <% end %>
 </div>
 

@@ -12,8 +12,16 @@ class PathsController < ApplicationController
   end
 
   def create
+    tags_to_add = params[:tags].nil? ? [] : remove_tags_from_params![:tags].split(/,\s*/)
     path = Path.new(path_params.merge(user_id: current_user.id))
     if path.save
+      tags_to_add.each do |tag|
+        path.tags <<  if Tag.find_by_name(tag).nil?
+                        Tag.create(name: tag)
+                      else
+                        Tag.find_by_name(tag)
+                      end
+      end
       redirect_to path_path(path)
     else
       render :new
@@ -37,6 +45,7 @@ class PathsController < ApplicationController
   def show
     @path = Path.find(params[:id])
     @votes_count = vote_count(params[:id], 'Path')
+    @tags = @path.tags
   end
 
   def destroy
@@ -49,10 +58,18 @@ private
     params.require(:path).permit(:title, :description, :user_id)
   end
 
+  def tags_params
+    params.require(:path).permit(:tags)
+  end
+
   def check_owner
     unless Path.find(params[:id]).user_id == current_user.id
       flash[:alert] = "You cannot edit or destroy a path you do not own!"
       redirect_to paths_path and return
     end
+  end
+
+  def remove_tags_from_params!
+    tags_params.extract!(:tags)
   end
 end

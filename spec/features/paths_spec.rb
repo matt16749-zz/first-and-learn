@@ -50,16 +50,6 @@ feature 'Creating New Paths' do
     expect(page).to have_content "Give Me One Reason"
   end
 
-  scenario "Allows Users to click back from path link" do
-    visit '/paths'
-    click_link "Create New Path"
-    fill_in "Title", with: "Stevie Wonder"
-    fill_in "Description", with: "Isn't She Lovely"
-    click_button "Create Path"
-    click_link "Back"
-    expect(page).to have_link "Stevie Wonder"
-  end
-
   scenario "Allows Users to delete path" do
     visit '/paths'
     click_link "Create New Path"
@@ -98,22 +88,7 @@ feature "Path Comments" do
     click_link "New Comment"
     fill_in "comment[body]", with: "No Diggity"
     click_button "Submit"
-    expect(page).to have_link "No Diggity"
-  end
-
-  scenario "View Individual Comment" do
-    visit '/paths'
-    click_link "Create New Path"
-    fill_in "Title", with: "ALL"
-    fill_in "Description", with: "CAPS"
-    click_button "Create Path"
-    click_link "New Comment"
-    fill_in "comment[body]", with: "MR. T"
-    click_button "Submit"
-    click_link "MR. T"
-    expect(page).to have_content "MR. T"
-    expect(page).to have_link "Back"
-    expect(page).to have_link "Destroy"
+    expect(page).to have_content "No Diggity"
   end
 
   scenario "Destroy Individual Comment" do
@@ -125,8 +100,7 @@ feature "Path Comments" do
     click_link "New Comment"
     fill_in "comment[body]", with: "Respect your mother"
     click_button "Submit"
-    click_link "Respect your mother"
-    click_link "Destroy"
+    click_link "Delete"
     expect(page).to_not have_link "MR."
   end
 end

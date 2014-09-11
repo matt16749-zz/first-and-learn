@@ -12,14 +12,10 @@ class AssetsController < ApplicationController
     @votes_count = vote_count(params[:id], 'Asset')
   end
 
-  def new
-    @asset = Asset.new
-  end
-
   def create
     asset = Asset.new(asset_params.merge(user_id: current_user.id))
     if asset.save
-      redirect_to assets_path
+      render json: asset
     else
       render :new
     end
@@ -47,7 +43,7 @@ class AssetsController < ApplicationController
 
   private
   def asset_params
-    params.require(:asset).permit(:title, :description, :url)
+    params.require(:asset).permit(:title, :description, :url, :category)
   end
 
   def check_owner

@@ -16,7 +16,7 @@
             <li class="path-author">Created by: <%= path.user.first_name %></li>
             <li class="path-description"><%= path.description %></li>
             <% if current_user && current_user.id == path.user_id %>
-            <li><button class="styled-button"><%= link_to "Edit Path", edit_path_path(path) %></button></li>
+            <li><button class="styled-button"><%= link_to "Edit", path_path(path) %></button></li>
             <% end %>
           </div>
         </ul>
@@ -25,18 +25,23 @@
   </div>
 
   <div class="user-assets">
-    <button class="styled-button"><%= link_to "Create Asset", new_asset_path %></button>
+ <div id="assets-partial">
+      <%= render 'assets/new', layout: false, locals: {asset: @new_asset} %>
+    </div>
+    <button class="styled-button create-assets-button">Create Link</button>
     <% if @user.assets.empty? %>
-      <h3>There are currently no assets to display!</h3>
+      <h3>There are currently no links to display!</h3>
     <% else %>
-      <% @user.assets.each do |asset| %>
-        <div class="asset user-asset-list">
-          <h3><%= asset.title %></h3>
-            <button class="styled-button"><%= link_to "Details", asset_path(asset) %></button>
-            <button class="styled-button"><a href="<%= asset.url %>">View Asset</a></button>
-          <p>Description: <%= asset.description %></p>
-        </div>
-      <% end %>
+      <div id="asset-list">
+        <% @user.assets.each do |asset| %>
+          <div class="asset user-asset-list">
+            <h3><%= asset.title %></h3>
+              <button class="styled-button"><%= link_to "Details", asset_path(asset) %></button>
+              <button class="styled-button"><a href="<%= asset.url %>">View Link</a></button>
+            <p>Description: <%= asset.description %></p>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 

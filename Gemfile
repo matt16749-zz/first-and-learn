@@ -8,6 +8,8 @@ gem 'rails', '4.1.4'
 
 gem 'devise'
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 gem 'omniauth'
 
 gem 'omniauth-linkedin'
@@ -33,6 +35,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem 'faker'
+  gem 'cucumber'
 end
 
 group :test do
@@ -41,3 +44,5 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
 end
+
+gem 'rails_12factor', group: :production

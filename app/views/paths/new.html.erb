@@ -1,14 +1,19 @@
-<%= form_for(@path) do |f| %>
- <ul>
-  <%= f.label :title, :class=>"input-label" %><br>
-  <%= f.text_area :title, :class=>"title-field" %>
-</ul>
- <ul>
-  <%= f.label :description, :class=>"input-label" %><br>
-  <%= f.text_area :description, :class=>"description-field", :cols => 10, :rows => 10 %>
-</ul>
-
- <ul>
-  <%= f.submit "Create Path", :class=>"styled-button create-path-button" %>
-</ul>
-<% end %>
+<div id="create-new-path">
+  <%= form_for(@path) do |f| %>
+  <ul>
+    <%= f.label :title, :class=>"input-label" %><br>
+    <%= f.text_area :title, :class=>"title-field" %>
+  </ul>
+  <ul>
+    <%= f.label :description, :class=>"input-label" %><br>
+    <%= f.text_area :description, :class=>"description-field", :cols => 10, :rows => 10 %>
+  </ul>
+  <ul>
+    <%= f.label :please_enter_tags_separated_by_commas, :class=>"input-label" %><br>
+    <input type="text" name="path[tags]" id="tags-for-path">
+  </ul>
+  <ul>
+    <%= f.submit "Create Path", :class=>"styled-button create-path-button" %>
+  </ul>
+  <% end %>
+</div>
