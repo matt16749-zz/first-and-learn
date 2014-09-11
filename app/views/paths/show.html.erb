@@ -1,44 +1,66 @@
 <div class="path-container">
   <h1 class="path-header"><%= @path.title %></h1>
+  <div id="path-tags">
+    <% @tags.each do |tag| %>
+      <span class="tag"><%= tag.name %></span>
+    <% end %>
+  </div>
   <h3><%= @path.description %></h3>
 
-  <p>Created by: <%= @path.user.first_name %></p>
-  <p>Votes: <span id="vote-count"><%= @votes_count %></span></p>
-  <% if user_signed_in? %>
-    <button class="vote styled-button" data-vote-state=true data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Upvote!</button>
-    <button class="vote styled-button" data-vote-state=false data-voteable-id=<%= @path.id %> data-voteable-type="Path" >Downvote!</button>
-  <% end %>
+  <p>
+    <span id="creator">Created by: <%= @path.user.first_name %></span> <span id="vote-count">Votes: <%= @votes_count %></span>
+    <% if user_signed_in? %>
+      <button class="vote styled-button" data-vote-state=true data-voteable-id=<%= @path.id %> data-voteable-type="Path" ><span class="glyphicon glyphicon-arrow-up"></span>Upvote!</button>
+      <button class="vote styled-button" data-vote-state=false data-voteable-id=<%= @path.id %> data-voteable-type="Path" ><span class="glyphicon glyphicon-arrow-down"></span> Downvote!</button>
+    <% end %>
+    <% if check_user_id(@path) %>
+      <button class="styled-button"><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
+      <button class="styled-button"><%= link_to "Edit Path Details", edit_path_path(@path) %></button>
+    <% end %>
+  </p>
 
-  <% if check_user_id(@path) %>
-    <button class="styled-button"><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
-    <button class="styled-button"><%= link_to "Edit Path", edit_path_path(@path) %></button>
-  <% end %>
-
-  <button class="styled-button"><%= link_to "Back", paths_path %></button>
-
-  <h3>Steps</h3>
-  <br>
    <% if check_user_id(@path) %>
     <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
    <% end %>
-  <% @path.steps.order(:position).each do |step| %>
-    <p><span class="step-body"><%= step.position %>: <%= step.body %></span></p>
-    <p class="asset-link"><span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span><img class="url-preview" src="http://api.pagepeeker.com/v2/thumbs.php?size=m&url=<%= step.asset.url %>" alt="<%= step.asset.url %>" /> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
-    <p class="asset-description"><%= step.asset.description %></p>
-    <% if check_user_id(step.path) %>
-      <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
-      <button class="styled-button"><%= link_to "Edit Step", polymorphic_path([:edit, @path, step]) %></button>
+  <br>
+  <div class="steps-list">
+    <% @path.steps.order(:position).each do |step| %>
+      <div class="step-div">
+        <p><span class="step-body"><span class="step-position"><%= step.position %></span><br>
+          <%= step.body %></span></p>
+        <p class="asset-link">
+          <span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span>
+          <a href="<%= step.asset.url %>"><%= step.asset.title %></a>
+          <br>
+          <img class="url-preview" src="http://api.pagepeeker.com/v2/thumbs.php?size=m&url=<%= step.asset.url %>" alt="<%= step.asset.url %>" />
+        </p>
+        <p class="asset-description"><%= step.asset.description %></p>
+        <% if check_user_id(step.path) %>
+          <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
+          <button class="styled-button"><%= link_to "Edit Step", polymorphic_path([:edit, @path, step]) %></button>
+        <% end %>
+      </div>
     <% end %>
+  </div>
+
+  <h3>Tags</h3>
+  <% if check_user_id(@path) %>
+    <%= render 'tags/new', layout: false %>
   <% end %>
 
-  <h3>Comments</h3>
-  <hr>
-   <% if user_signed_in? %>
-    <button class="styled-button" id="new-comment-button"><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
-   <% end %>
-  <% @path.comments.each do |comment|%>
-    <p><span class="glyphicon glyphicon-comment"></span> <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %> <%= comment.user.last_name %> <%= link_to "Edit", polymorphic_path([@path, comment]) %></p>
-    <p><%= comment.body %></p>
-    <br>
-  <% end %>
+
+  <div class="row col-md-10">
+    <h3>Comments</h3>
+    <hr>
+     <% if user_signed_in? %>
+      <button class="styled-button" id="new-comment-button"><%= link_to "New Comment", polymorphic_path([@path, Comment]) %></button>
+     <% end %>
+    <% @path.comments.each do |comment|%>
+      <p><span class="glyphicon glyphicon-comment"></span>
+           <%= link_to "Edit", polymorphic_path([:edit, @path, comment]) %> <%= link_to "Delete", polymorphic_path([@path, comment]), method: :delete %></p>
+      <p class="path-comment"><%= comment.body %></p>
+        <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %> <%= comment.user.last_name %><br>
+      <br>
+    <% end %>
+  </div>
 </div>

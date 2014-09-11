@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tag do
-    name Faker::Commerce.department
+    name Faker::Lorem.word
     user_id 1
   end
 end

@@ -27,6 +27,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    comment = Comment.find(params[:id])
+    comment.update(comment_params)
+    if comment.save
+      redirect_to polymorphic_path(@commentable)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     Comment.find(params[:id]).destroy
     redirect_to polymorphic_path(@commentable)
