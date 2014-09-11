@@ -21,7 +21,6 @@
           <li class="navbar-item"><a class="navbar-brand" href="/users/<%= current_user.id %>">Profile</a></li>
           <li class="navbar-item"><%= link_to "Sign Out", destroy_user_session_path, :method => "delete", :class=>"navbar-brand" %></li>
         <%else%>
-          <li class="navbar-item"><a class="navbar-brand" href="/paths">Explore Other Paths</a></li>
           <li class="navbar-item"><%= link_to "Sign In", user_session_path, :method => "get", :class=>"navbar-brand" %></li>
           <li class="navbar-item"><%= link_to "Sign Up", new_user_registration_path, :method => "get", :class=>"navbar-brand" %></li>
         <% end %>

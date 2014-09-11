@@ -12,7 +12,7 @@ class PathsController < ApplicationController
   end
 
   def create
-    tags_to_add = params[:tags].nil? ? [] : remove_tags_from_params![:tags].split(/,\s*/)
+    tags_to_add = params[:path][:tags].nil? ? [] : remove_tags_from_params![:tags].split(/,\s*/)
     path = Path.new(path_params.merge(user_id: current_user.id))
     if path.save
       tags_to_add.each do |tag|
