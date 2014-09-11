@@ -8,12 +8,19 @@ FirstAndLearn.TagsController.prototype = {
     $('#add-tags').on('click', this.getTagsFromInputAndCreate.bind(this));
   },
 
-  addTagsToPathFormAndHideAddTagsForm: function (tagsToAdd) {
-    var tagsToAddString = tagsToAdd.tags.join(', ');
-    $('#tags-for-path').val(tagsToAddString);
-    $('#tags-partial').fadeOut(function () {
-      $('[name="tag[name]"]').val('');
-    });
+  addTagsToPathTagList: function (tagsToAdd) {
+    var tagsToAddArray = tagsToAdd.tags;
+    var tagsShowing = this.getTagsFromPage();
+    var newTagsLength = tagsToAddArray.length;
+
+    for (var i = 0; i < newTagsLength; i++) {
+      if (tagsShowing.indexOf(tagsToAddArray[i]) !== -1)
+        tagsShowing.push(tagsToAddArray[i]);
+    }
+
+    var allTagsHTML = this.sortAndCreateHTML(tagsShowing);
+
+    $('#path-tags').empty().html(allTagsHTML);
   },
 
   getTagsFromInputAndCreate: function (e) {
