@@ -14,7 +14,7 @@ FirstAndLearn.TagsController.prototype = {
     var newTagsLength = tagsToAddArray.length;
 
     for (var i = 0; i < newTagsLength; i++) {
-      if (tagsShowing.indexOf(tagsToAddArray[i]) !== -1)
+      if (tagsShowing.indexOf(tagsToAddArray[i]) === -1)
         tagsShowing.push(tagsToAddArray[i]);
     }
 
