@@ -18,13 +18,17 @@ PathVoteController.prototype = {
 
   sendVote: function (e) {
     e.preventDefault();
+    if (e.target.dataset.voteableId === undefined)
+      var pathId = window.location.href.split('/').slice(-1)[0];
+    else
+      var pathId = e.target.dataset.voteableId;
     $.ajax({
-      url: "/paths/"+ e.target.dataset.voteableId + "/votes",
+      url: "/paths/" + pathId + "/votes",
       type: "POST",
       data: e.target.dataset
     })
     .done(function(data){
-      $('#vote-count').html(data.vote_count);
+      $('#vote-count').html('Votes: ' + data.vote_count);
     });
   }
 };
