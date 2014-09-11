@@ -6,11 +6,11 @@
   </ul>
   <ul>
     <%= f.label :description, :class=>"input-label" %><br>
-    <%= f.text_area :description, :class=>"description-field", :cols => 10, :rows => 10 %>
+    <%= f.text_area :description, :class=>"description-field ", :cols => 10, :rows => 10 %>
   </ul>
   <ul>
     <%= f.label :please_enter_tags_separated_by_commas, :class=>"input-label" %><br>
-    <input type="text" name="path[tags]" id="tags-for-path">
+    <input type="text" name="path[tags]" id="tags-for-path" class="title-field">
   </ul>
   <ul>
     <%= f.submit "Create Path", :class=>"styled-button create-path-button" %>

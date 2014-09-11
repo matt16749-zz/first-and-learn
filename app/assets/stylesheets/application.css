@@ -47,10 +47,16 @@
 .description-field{
   width: 30em;
   height: 6em;
+  border: 1px solid lightgray;
+  border-radius: 5px;
 }
 
 .title-field{
   width: 30em;
+  height: 3em;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+
 }
 
 .login{

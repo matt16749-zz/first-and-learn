@@ -2,11 +2,11 @@
   <h2 class="path-header">New Link</h2>
   <%= form_for :asset, class: 'new-asset', url: '/assets' do |f| %>
     <%= f.label :title %><br />
-    <div><%= f.text_field :title %></div>
-    <%= f.label :description %><br />
-    <div><%= f.text_area :description %></div>
+    <div><%= f.text_field :title, :class =>"title-field" %></div>
+    <%= f.label :description%><br />
+    <div><%= f.text_area :description, :class =>"title-field" %></div>
     <%= f.label :url %><br />
-    <div><%= f.url_field :url %></div>
+    <div><%= f.url_field :url, :class =>"title-field"%></div>
     <%= f.label :category %>
     <div><%= f.select :category, options_for_select([['Book', 'book'], ['Video', 'video'], ['Audio', 'audio'], ['Tutorial', 'tutorial'], ['Practice', 'practice'], ['Event', 'event'], ['Other', 'other']]) %></div>
     <%= f.submit "Save Link", :class => "styled-button" %>
