@@ -1,5 +1,10 @@
 <div class="path-container">
   <h1 class="path-header"><%= @path.title %></h1>
+  <div id="path-tags">
+    <% @tags.each do |tag| %>
+      <span class="tag"><%= tag.name %></span>
+    <% end %>
+  </div>
   <h3><%= @path.description %></h3>
   <p>
     <span id="creator">Created by: <%= @path.user.first_name %></span> <span id="vote-count">Votes: <%= @votes_count %></span>
@@ -9,30 +14,34 @@
     <% end %>
     <% if check_user_id(@path) %>
       <button class="styled-button"><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
-      <button class="styled-button"><%= link_to "Edit Path", edit_path_path(@path) %></button>
+      <button class="styled-button"><%= link_to "Edit Path Details", edit_path_path(@path) %></button>
     <% end %>
   </p>
-
-
 
    <% if check_user_id(@path) %>
     <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
    <% end %>
   <br>
   <div class="steps-list">
-  <% @path.steps.order(:position).each do |step| %>
-  <div class="step-div">
-    <p><span class="step-body"><span class="step-position"><%= step.position %></span><br>
-      <%= step.body %></span></p>
-    <p class="asset-link"><span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
-    <p class="asset-description"><%= step.asset.description %></p>
-    <% if check_user_id(step.path) %>
-      <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
-      <button class="styled-button"><%= link_to "Edit Step", polymorphic_path([:edit, @path, step]) %></button>
+    <% @path.steps.order(:position).each do |step| %>
+      <div class="step-div">
+        <p><span class="step-body"><span class="step-position"><%= step.position %></span><br>
+          <%= step.body %></span></p>
+        <p class="asset-link"><span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
+        <p class="asset-description"><%= step.asset.description %></p>
+        <% if check_user_id(step.path) %>
+          <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
+          <button class="styled-button"><%= link_to "Edit Step", polymorphic_path([:edit, @path, step]) %></button>
+        <% end %>
+      </div>
     <% end %>
-</div>
+  </div>
+
+  <h3>Tags</h3>
+  <% if check_user_id(@path) %>
+    <%= render 'tags/new', layout: false %>
   <% end %>
-</div>
+
 
   <div class="row col-md-10">
     <h3>Comments</h3>
@@ -42,7 +51,7 @@
      <% end %>
     <% @path.comments.each do |comment|%>
       <p><span class="glyphicon glyphicon-comment"></span>
-           <%= link_to "Edit", polymorphic_path([@path, comment]) %></p>
+           <%= link_to "Edit", polymorphic_path([:edit, @path, comment]) %> <%= link_to "Delete", polymorphic_path([@path, comment]), method: :delete %></p>
       <p class="path-comment"><%= comment.body %></p>
         <%= comment.created_at.strftime('%a %d %b %Y %I:%M %p') %> By: <%= comment.user.first_name %> <%= comment.user.last_name %><br>
       <br>

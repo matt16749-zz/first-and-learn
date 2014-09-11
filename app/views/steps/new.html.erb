@@ -7,7 +7,7 @@
     <%= select("asset", "asset_id", @assets.collect {|a| [ a.title, a.id ] } ) %>
     <%= f.submit :class => "styled-button" %>
   <% end %>
-  <button class="styled-button create-assets-button">Create Assets</button>
+  <button class="styled-button create-assets-button">Create Link</button>
   <div id="assets-partial">
     <%= render 'assets/new', layout: false, locals: {asset: @new_asset} %>
   </div>

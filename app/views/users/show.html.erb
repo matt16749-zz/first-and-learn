@@ -25,15 +25,14 @@
     <% end %>
   </div>
 
-
   <div class="user-assets">
     <h2 class="path-header">Your Links</h2>
     <div id="assets-partial">
       <%= render 'assets/new', layout: false, locals: {asset: @new_asset} %>
     </div>
-    <button class="styled-button create-assets-button">Create Asset</button>
+    <button class="styled-button create-assets-button">Create Link</button>
     <% if @user.assets.empty? %>
-      <h3>There are currently no assets to display!</h3>
+      <h3>There are currently no links to display!</h3>
     <% else %>
       <div id="asset-list">
         <% @user.assets.each do |asset| %>
@@ -41,11 +40,11 @@
             <h3><%= asset.title %></h3>
             <p>Description: <%= asset.description %></p>
               <button class="styled-button"><%= link_to "Details", asset_path(asset) %></button>
-              <button class="styled-button"><a href="<%= asset.url %>">View Asset</a></button>
+              <button class="styled-button"><a href="<%= asset.url %>">View Link</a></button>
+            <p>Description: <%= asset.description %></p>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
-
 </div>
