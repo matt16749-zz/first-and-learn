@@ -15,19 +15,29 @@
     <% if check_user_id(@path) %>
       <button class="styled-button"><%= link_to "Delete Path", path_path(@path), :method => :delete %></button>
       <button class="styled-button"><%= link_to "Edit Path Details", edit_path_path(@path) %></button>
+      <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
+      <%= render 'tags/new', layout: false %>
     <% end %>
   </p>
 
-   <% if check_user_id(@path) %>
-    <button class="styled-button"><%= link_to "New Step", new_path_step_path(@path) %></button>
-   <% end %>
   <br>
   <div class="steps-list">
     <% @path.steps.order(:position).each do |step| %>
       <div class="step-div">
-        <p><span class="step-body"><span class="step-position"><%= step.position %></span><br>
-          <%= step.body %></span></p>
-        <p class="asset-link"><span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span> <a href="<%= step.asset.url %>"><%= step.asset.title %></a></p>
+        <p>
+          <span class="step-body">
+            <span class="step-position"><%= step.position %></span>
+            <span class="<%= step.asset.category %>" title="Type: <%= step.asset.category %>"></span>
+            <br>
+            <%= step.body %>
+          </span>
+        </p>
+        <p class="asset-link">
+          <a href="<%= step.asset.url %>"><%= step.asset.title %>
+            <br>
+            <img class="url-preview" src="http://api.pagepeeker.com/v2/thumbs.php?size=m&url=<%= step.asset.url %>" alt="<%= step.asset.url %>" />
+          </a>
+        </p>
         <p class="asset-description"><%= step.asset.description %></p>
         <% if check_user_id(step.path) %>
           <button class="styled-button"><%= link_to "Delete Step", polymorphic_path([@path, step]), :method => :delete %></button>
@@ -36,12 +46,6 @@
       </div>
     <% end %>
   </div>
-
-  <h3>Tags</h3>
-  <% if check_user_id(@path) %>
-    <%= render 'tags/new', layout: false %>
-  <% end %>
-
 
   <div class="row col-md-10">
     <h3>Comments</h3>
