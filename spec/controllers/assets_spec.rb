@@ -4,6 +4,11 @@ RSpec.describe AssetsController, :type => :controller do
   let(:user) { create(:user) }
   let(:asset) { create(:asset, user_id: user.id) }
 
+  before :each do
+    User.destroy_all
+    Asset.destroy_all
+  end
+
   describe "GET #index" do
     it 'responds successfully with an HTTP 200 status code' do
       sign_in :user, user
@@ -36,6 +41,13 @@ RSpec.describe AssetsController, :type => :controller do
       post :create, asset: FactoryGirl.attributes_for(:asset)
       expect(response).to have_http_status(200)
     end
+
+    it 'increases asset count in db by 1' do
+      sign_in :user, user
+      expect{
+        post :create, asset: FactoryGirl.attributes_for(:asset)
+      }.to change{Asset.count}
+    end
   end
 
   describe "GET #edit" do
@@ -67,13 +79,19 @@ RSpec.describe AssetsController, :type => :controller do
   describe "POST #destroy" do
     it 'responds successfully with an HTTP 302 status code' do
       sign_in :user, user
-      post :destroy, id: asset.id
+      delete :destroy, id: asset.id
       expect(response).to have_http_status(302)
     end
 
     it 'redirects to login page if user is not logged in' do
-      post :destroy, id: asset.id
+      delete :destroy, id: asset.id
       expect(response).to redirect_to '/users/sign_in'
+    end
+
+    it 'decreases asset count in db by 1' do
+      sign_in :user, user
+      my_asset = Asset.create(description: 'description', user_id: user.id, title: 'title', url: 'http://someurl.com')
+      expect {delete :destroy, id: my_asset.id}.to change{Asset.count}
     end
   end
 end
