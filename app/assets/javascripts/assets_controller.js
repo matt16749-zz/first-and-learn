@@ -12,7 +12,7 @@ FirstAndLearn.AssetsController.prototype = {
     var newAssetHTML =  '<div style="display: none" class="asset">' +
                         '<h3>' + asset.title +'</h3>' +
                         '<button class="styled-button"><a href="/assets/' + asset.id + '">Details</a></button>' + " " +
-                        '<button class="styled-button"><a href="' + asset.url + '">View Asset</a></button>' +
+                        '<button class="styled-button"><a href="' + asset.url + '">View Link</a></button>' +
                         '<p>Description: ' + asset.description  + '</p>' +
                         '</div>';
     $('#asset-list').prepend(newAssetHTML);
