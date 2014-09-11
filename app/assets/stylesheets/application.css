@@ -161,6 +161,10 @@
   border-bottom: 1px solid lightgray;
 }
 
+.path-body {
+  clear: both;
+}
+
 .step-position{
   font-size: 3em;
   color: #336699;
@@ -306,4 +310,21 @@
   float: right;
   width: 25em;
   margin: 0 auto;
+}
+
+/****************TAG SHOW*************/
+
+.tag {
+  background-color: #FFAA00;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  float: left;
+  font-weight: 400;
+  letter-spacing: .2px;
+  line-height: 0.8;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  top: 0;
 }
